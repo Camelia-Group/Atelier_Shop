@@ -1,5 +1,3 @@
-# Atelier_Shop
-
 <h1>Atelier Shop</h1>
 <br>
 <p>
