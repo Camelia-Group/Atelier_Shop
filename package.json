@@ -1,0 +1,36 @@
+{
+  "name": "atelier_shop",
+  "version": "1.0.0",
+  "description": "<h1>Atelier Shop</h1> <br> <p> This project is a client-facing product shop with style selectors, add-to-cart features, reviews, Q&As, and related items.  The specifications of this project were provided by a business looking to update their virtual storefront. </p> <br> <h3>How to install:</h3> <br> <p>Clone the repository to your computer and run the command npm install</p> <br> <p>Credits:<p> <ul> <li>Ivan Day</li> <li>Stephen Chong</li> <li>James Carrington</li> <li>Brandon Vega</li> </ul>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --mode=development",
+    "build": "webpack --mode=production",
+    "dev": "webpack serve --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Camelia-Group/Atelier_Shop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Camelia-Group/Atelier_Shop/issues"
+  },
+  "homepage": "https://github.com/Camelia-Group/Atelier_Shop#readme",
+  "dependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.7.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.11.1"
+  }
+}
