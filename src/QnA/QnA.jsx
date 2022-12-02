@@ -1,5 +1,9 @@
 import React from 'react';
-
+import QuestionSearch from './QuestionSearch.jsx';
 export default function QnA() {
-  return <h1>Hello this is Q&A</h1>;
+  return (
+    <h1>Questions & Answers</h1>
+    <QuestionSearch />
+
+  );
 }
