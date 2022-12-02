@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function QnA() {
-  return <h1>QnA</h1>;
+  return <h1>Hello this is Q&A</h1>;
 }
