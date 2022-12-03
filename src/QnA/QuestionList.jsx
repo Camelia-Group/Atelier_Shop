@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Question from './Question.jsx';
+import Question from './Question';
 
 function QuestionList({ questions }) {
   return (
@@ -11,6 +11,7 @@ function QuestionList({ questions }) {
     </div>
   );
 }
+export default QuestionList;
 
 QuestionList.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.shape({
@@ -31,8 +32,4 @@ QuestionList.propTypes = {
       })),
     })),
   }))).isRequired,
-  setRenderSearch: PropTypes.func.isRequired,
-  setSearchResults: PropTypes.func.isRequired,
 };
-
-export default QuestionList;

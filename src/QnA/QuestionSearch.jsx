@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
 
-function QuestionSearch({setRenderSearch, setSearchResults, questions}) {
+function QuestionSearch({ setRenderSearch, setSearchResults, questions }) {
   const [searchTerm, setSearchTerm] = useState('');
   function handleOnChange(e) {
     setSearchTerm(e.target.value);
@@ -17,6 +17,7 @@ function QuestionSearch({setRenderSearch, setSearchResults, questions}) {
     </>
   );
 }
+
 QuestionSearch.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.shape({
     question_body: PropTypes.string.isRequired,

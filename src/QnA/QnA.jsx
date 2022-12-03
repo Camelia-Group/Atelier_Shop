@@ -1,4 +1,4 @@
-import { React, useState} from 'react';
+import { React, useState } from 'react';
 import QuestionSearch from './QuestionSearch';
 import QuestionList from './QuestionList';
 
@@ -17,8 +17,7 @@ export default function QnA() {
         date: '2018-08-18T00:00:00.000Z',
         answerer_name: 'Seller',
         helpfulness: 4,
-        photos: []
-        // ...
+        photos: [],
       },
     },
   },
