@@ -8,7 +8,7 @@ function QuestionSearch({setRenderSearch, setSearchResults, questions}) {
   }
   function handleOnClick() {
     setRenderSearch(true);
-    setSearchResults(questions.filter(question => question.question_body.includes(searchTerm)));
+    setSearchResults(questions.filter((question) => question.question_body.includes(searchTerm)));
   }
   return (
     <>
@@ -18,7 +18,7 @@ function QuestionSearch({setRenderSearch, setSearchResults, questions}) {
   );
 }
 QuestionSearch.propTypes = {
-  questions: PropTypes.arrayOf(PropTypes.shape({
+  questions: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.shape({
     question_body: PropTypes.string.isRequired,
     question_date: PropTypes.string.isRequired,
     asker_name: PropTypes.string.isRequired,
@@ -34,7 +34,9 @@ QuestionSearch.propTypes = {
         url: PropTypes.string,
       })),
     })),
-  })).isRequired,
+  }))).isRequired,
+  setRenderSearch: PropTypes.func.isRequired,
+  setSearchResults: PropTypes.func.isRequired,
 };
 
 export default QuestionSearch;
