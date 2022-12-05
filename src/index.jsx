@@ -15,6 +15,7 @@ function App() {
       <div><QnA /></div>
       <div><RelatedItems /></div>
       <div><Reviews /></div>
+      <div>TESTing asd asdasd as</div>
     </div>
   );
 }
