@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Details from './Details.jsx';
 
 const axios = require('axios');
@@ -6,13 +6,16 @@ const axios = require('axios');
 export default function Overview() {
   const [product, setProduct] = useState({});
 
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37311', {
-    headers: {
-      Authorization: process.env.API_KEY,
-    },
-  }).then((response) => {
-    setProduct(response.data);
-  });
+  useEffect(() => {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37311', {
+      headers: {
+        Authorization: process.env.API_KEY,
+      },
+    }).then((response) => {
+      console.log(response.data);
+      setProduct(response.data);
+    });
+  }, []);
 
   return (
     <div>
