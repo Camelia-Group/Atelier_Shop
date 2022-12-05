@@ -7,7 +7,7 @@ import Reviews from './Reviews/Reviews.jsx';
 
 const root = createRoot(document.getElementById('root'));
 
-
+// Huzzah for jsx!
 function App() {
   return (
     <div>
