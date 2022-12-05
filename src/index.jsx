@@ -4,6 +4,7 @@ import Overview from './Overview/Overview.jsx';
 import QnA from './QnA/QnA.jsx';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import Reviews from './Reviews/Reviews.jsx';
+import './styles.css';
 
 const root = createRoot(document.getElementById('root'));
 
