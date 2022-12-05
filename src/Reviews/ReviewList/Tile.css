@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.review-tile {
+  border: 1px solid black;
+}
+
+.nickname {
+ float: right;
+}
