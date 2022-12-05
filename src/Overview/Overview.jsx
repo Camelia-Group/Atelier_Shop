@@ -6,18 +6,18 @@ const axios = require('axios');
 export default function Overview() {
   const [product, setProduct] = useState({});
 
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products', {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37311', {
     headers: {
       Authorization: process.env.API_KEY,
     },
-  }).then((data) => {
-    console.log(data);
+  }).then((response) => {
+    setProduct(response.data);
   });
 
   return (
     <div>
       <h1>Overview</h1>
-      <div><Details /></div>
+      <div><Details product={product} /></div>
     </div>
   );
 }
