@@ -1,8 +1,23 @@
 import React, {useState, useEffect} from 'react'
 
-export default function OutfitList() {
+import ProductCard from './ProductCard.jsx'
 
 
+
+
+
+
+
+
+export default function OutfitList({Outfit}) {
+
+return (<>
+<div className="List-Container OutfitList">{Outfit.map((OutfitItem)=> {
+  <ProductCard ItemtoCard={OutfitItem}/>
+
+
+})}</div>
+</>)
 
 
 
