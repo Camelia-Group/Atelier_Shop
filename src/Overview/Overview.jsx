@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Details from './Details.jsx';
+import Description from './Description.jsx';
 
 const axios = require('axios');
 
@@ -30,7 +31,7 @@ export default function Overview() {
           <div className="addToCart">add to cart</div>
         </div>
       </div>
-      <div className="productDescription">product description</div>
+      <div className="productDescription"><Description product={product} /></div>
     </div>
   );
 }
