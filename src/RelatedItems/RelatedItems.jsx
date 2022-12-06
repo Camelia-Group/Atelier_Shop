@@ -10,7 +10,42 @@ import OutfitList from './OutfitList.jsx'
 
 
 export default function RelatedItems() {
-  return <h1>Related Items</h1>;
+
+// axios.get('/products', {
+//   headers: {
+//     'Authorization': `${}`
+
+//   }
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  return (<>
+  <div>
+  <h1>Related Items</h1>
+
+  <RelatedItemsList/>
+  </div>
+
+ <div><h1>Outfit List</h1>
+  <OutfitList /></div>
+
+  </>)
 
 
 

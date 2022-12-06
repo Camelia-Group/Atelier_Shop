@@ -6,8 +6,16 @@ import ProductCard from './ProductCard.jsx'
 
 
 export default function RelatedItemsList({Items}) {
-const
+  const [showModal, setShowModal] = useState(false)
 // const [relatedItems, setRelatedItems] = useState([])
+
+
+
+
+
+
+
+
 
 return (<>
 <div className="List-Container RelatedItems">
