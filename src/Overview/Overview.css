@@ -1,0 +1,35 @@
+div {
+  outline: 1px solid red;
+}
+
+#wrapper {
+  width: 1000px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.overviewContainer {
+  display: flex;
+}
+
+.image {
+  width: 70%;
+}
+
+.sidebarDiv {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+#descriptionWrapper {
+  display: flex;
+}
+
+.description {
+  width: 70%;
+}
+
+.features {
+  width: 30%;
+}
