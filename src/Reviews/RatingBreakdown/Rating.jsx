@@ -5,68 +5,13 @@ const Rating = () => {
 
   return (
     <>
-<div className="rating-review">
-<div className="row">
-  <div className="side">
-    <div>5 ★</div>
+    <div className="ratingContainer">
+  <div className="bar bar-5">5 ★</div>
+  <div className="bar bar-4">4 ★</div>
+  <div className="bar bar-3">3 ★</div>
+  <div className="bar bar-2">2 ★</div>
+  <div className="bar bar-1">1 ★</div>
   </div>
-  <div className="middle">
-    <div className="bar-container">
-      <div className="bar-5"></div>
-    </div>
-  </div>
-  <div className="side right">
-    <div>150</div>
-  </div>
-  <div className="side">
-    <div>4 ★</div>
-  </div>
-  <div className="middle">
-    <div className="bar-container">
-      <div className="bar-4"></div>
-    </div>
-  </div>
-  <div className="side right">
-    <div>63</div>
-  </div>
-  <div className="side">
-    <div>3 ★</div>
-  </div>
-  <div className="middle">
-    <div className="bar-container">
-      <div className="bar-3"></div>
-    </div>
-  </div>
-  <div className="side right">
-    <div>15</div>
-  </div>
-  <div className="side">
-    <div>2 ★</div>
-  </div>
-  <div className="middle">
-    <div className="bar-container">
-      <div className="bar-2"></div>
-    </div>
-  </div>
-  <div className="side right">
-    <div>6</div>
-  </div>
-  <div className="side">
-    <div>1 ★</div>
-  </div>
-  <div className="middle">
-    <div className="bar-container">
-      <div className="bar-1"></div>
-    </div>
-  </div>
-  <div className="side right">
-    <div>20</div>
-  </div>
-</div>
-</div>
-
-
-
     </>
   )
 }
@@ -94,3 +39,6 @@ export default Rating;
     <li className="bar-1">1 stars .....</li>
   </ul>
 </div> */}
+
+
+<div>3 ★</div>
