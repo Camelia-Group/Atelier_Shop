@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+ flex-direction: row;
+}
+
+.one {
+  border: 2px solid red;
+  width: 400px;
+  height: 400px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+}
+
+.two {
+  border: 2px solid blue;
+  width: 600px;
+  height: 80%;
+}
+.three {
+  border: 2px solid green;
+  width: 400px;
+  height: 400px;
+}
