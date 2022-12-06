@@ -7,6 +7,9 @@ This project is a client-facing product shop with style selectors, add-to-cart f
 <h3>How to install:</h3>
 <br>
 <p>Clone the repository to your computer and run the command npm install</p>
+<p>Run npm start in one terminal instance
+<p>Run node server.js in another terminal instance
+<p>Navigate to localhost:4000
 <br>
 <p>Credits:<p>
 <ul>
