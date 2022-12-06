@@ -1,7 +1,9 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
+  watch: true,
   entry: './src/index.jsx',
   output: {
     path: path.join(__dirname, 'public'),
@@ -20,11 +22,8 @@ module.exports = {
       },
     ],
   },
-  // [devtool] this is an additional source map that will let the browser
-  // know what files are running our code.
-  // Helps with error tracing.
-  // Without it we will not know where our errors are coming from
-  // because it will state that everything inside the bundle file.
+  // [devtool] this is an additional source map that will let the browser know what files are running our code.
+  // Helps with error tracing. Without it we will not know where our errors are coming from because it will state that everything inside the bundle file.
   devtool: 'eval-cheap-module-source-map',
   // [devServer] configuration for the live server including port
   devServer: {
@@ -36,11 +35,7 @@ module.exports = {
     // [port] what port on our local machine to run the dev server
     port: 3000,
   },
-  resolve: {
-    extensions: ['.js'],
-    modules: [
-      path.join(__dirname, './node_modules'),
-    ],
-  },
-
+  plugins: [
+    new Dotenv(),
+  ],
 };
