@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Details from './Details.jsx';
 import Description from './Description.jsx';
+import './Overview.css';
 
 const axios = require('axios');
 
