@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Question from './Question';
+import Question from './Question.jsx';
 
 function QuestionList({ questions }) {
   return (

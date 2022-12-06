@@ -1,9 +1,11 @@
-import { React, useState } from 'react';
-import QuestionSearch from './QuestionSearch';
-import QuestionList from './QuestionList';
+import { useState } from 'react';
+import React from 'react';
+import QuestionSearch from './QuestionSearch.jsx';
+import QuestionList from './QuestionList.jsx';
 
 export default function QnA() {
-  const [questions, setQuestions] = useState([{
+  // const [questions, setQuestions] = useState();
+  const questions = [{
     question_id: 37,
     question_body: 'Why is this product cheaper here than other sites?',
     question_date: '2018-10-18T00:00:00.000Z',
@@ -47,23 +49,30 @@ export default function QnA() {
       },
     },
   },
-  ]);
+  ];
+  const style = {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '400px',
+    margin: 'auto',
+  };
   const [renderSearch, setRenderSearch] = useState(false);
   const [searchResults, setSearchResults] = useState([{}]);
-
+  const [showMoreAnswers, setShowMoreAnswers] = useState(false);
   return (
-    <>
-      <h1>Questions & Answers</h1>
+    <div className="questions-answers-container" style={style}>
+      <h2 style={{ fontSize: '12px', color: 'gray', textTransform: 'uppercase' }}>Questions & Answers</h2>
       <QuestionSearch
         setRenderSearch={setRenderSearch}
         setSearchResults={setSearchResults}
-        setQuestions={setQuestions}
       />
 
       {
         renderSearch ? (
           <QuestionList
             questions={searchResults}
+            showMoreAnswers={showMoreAnswers}
+            setShowMoreAnswers={setShowMoreAnswers}
           />
         ) : (
           <QuestionList
@@ -71,7 +80,7 @@ export default function QnA() {
           />
         )
       }
-    </>
+    </div>
 
   );
 }
