@@ -17,9 +17,18 @@ export default function Overview() {
   }, []);
 
   return (
-    <div>
-      <h1>Overview</h1>
-      <div><Details product={product} /></div>
+    // <div>
+    //   <h1>Overview</h1>
+    //   <div><Details product={product} /></div>
+    // </div>
+    <div id="wrapper">
+      <div className="overviewContainer">
+        <div className="image">image div</div>
+        <div className="productDetails">product details</div>
+        <div className="styleSelector">style selector</div>
+        <div className="addToCart">add to cart</div>
+        <div className="productDescription">product description</div>
+      </div>
     </div>
   );
 }

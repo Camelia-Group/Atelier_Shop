@@ -1,3 +1,38 @@
-* {
+div {
   outline: 1px solid red;
+}
+
+#wrapper {
+  width: 1000px;
+  display: flex;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.overviewContainer {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.image {
+  width: 80%;
+  flex: 1;
+}
+
+.productDetails {
+  flex: 2;
+}
+
+.styleSelector {
+  flex: 2;
+}
+
+.addToCart {
+  flex: 2;
+}
+
+.productDescription {
+  flex: 2;
 }
