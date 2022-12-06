@@ -24,11 +24,13 @@ export default function Overview() {
     <div id="wrapper">
       <div className="overviewContainer">
         <div className="image">image div</div>
-        <div className="productDetails">product details</div>
-        <div className="styleSelector">style selector</div>
-        <div className="addToCart">add to cart</div>
-        <div className="productDescription">product description</div>
+        <div className="sidebarDiv">
+          <div className="productDetails"><Details product={product} /></div>
+          <div className="styleSelector">style selector</div>
+          <div className="addToCart">add to cart</div>
+        </div>
       </div>
+      <div className="productDescription">product description</div>
     </div>
   );
 }
