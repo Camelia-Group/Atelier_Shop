@@ -9,7 +9,7 @@ const axios = require('axios');
 export default function Overview() {
   const [product, setProduct] = useState({});
   const [productStyle, setProductStyle] = useState([]);
-  const [selectedStyle, setSelectedStyle] = useState([]);
+  const [selectedStyle, setSelectedStyle] = useState({});
 
   useEffect(() => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37311', {
