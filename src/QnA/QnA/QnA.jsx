@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import QuestionSearch from './QuestionSearch.jsx';
 import QuestionList from './QuestionList.jsx';
 
@@ -53,7 +52,7 @@ export default function QnA() {
   const style = {
     display: 'flex',
     flexDirection: 'column',
-    width: '400px',
+    width: '600px',
     margin: 'auto',
   };
   const [renderSearch, setRenderSearch] = useState(false);
