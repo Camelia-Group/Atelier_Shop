@@ -103,7 +103,7 @@ function Question({ question }) {
                     </button>
                   </span>
                 </div>
-                <div>
+                <div className="question-answer-more-container">
                   {
                     answerKeys > 1 ? <button type="button" className="question-answer-more">LOAD MORE ANSWERS</button> : null
                   }
