@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Details from './Details.jsx';
 import Description from './Description.jsx';
+import StyleSelector from './StyleSelector.jsx';
 import './Overview.css';
 
 const axios = require('axios');
 
 export default function Overview() {
   const [product, setProduct] = useState({});
+  const [productStyle, setProductStyle] = useState([]);
 
   useEffect(() => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37311', {
@@ -15,6 +17,14 @@ export default function Overview() {
       },
     }).then((response) => {
       setProduct(response.data);
+    }).then(() => {
+      axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37311/styles', {
+        headers: {
+          Authorization: process.env.API_KEY,
+        },
+      }).then((response) => {
+        setProductStyle(response.data.results);
+      });
     });
   }, []);
 
@@ -28,7 +38,7 @@ export default function Overview() {
         <div className="image">image div</div>
         <div className="sidebarDiv">
           <div className="productDetails"><Details product={product} /></div>
-          <div className="styleSelector">style selector</div>
+          <div className="styleSelector"><StyleSelector styles={productStyle} /></div>
           <div className="addToCart">add to cart</div>
         </div>
       </div>
