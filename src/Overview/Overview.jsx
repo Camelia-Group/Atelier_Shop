@@ -8,7 +8,7 @@ const axios = require('axios');
 
 export default function Overview() {
   const [product, setProduct] = useState({});
-  const [productStyle, setProductStyle] = useState([]);
+  const [productStyles, setProductStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({});
 
   useEffect(() => {
@@ -24,8 +24,7 @@ export default function Overview() {
           Authorization: process.env.API_KEY,
         },
       }).then((response) => {
-        console.log(response.data.results);
-        setProductStyle(response.data.results);
+        setProductStyles(response.data.results);
       });
     });
   }, []);
@@ -42,7 +41,7 @@ export default function Overview() {
           <div className="productDetails"><Details product={product} /></div>
           <div className="styleSelector">
             <StyleSelector
-              styles={productStyle}
+              styles={productStyles}
               selectedStyle={selectedStyle}
               setSelectedStyle={setSelectedStyle}
             />
