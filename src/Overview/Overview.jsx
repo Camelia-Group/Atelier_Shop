@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Details from './Details.jsx';
 import Description from './Description.jsx';
 import StyleSelector from './StyleSelector.jsx';
+import AddToCart from './AddToCart.jsx';
 import './Overview.css';
 
 const axios = require('axios');
@@ -9,7 +10,7 @@ const axios = require('axios');
 export default function Overview() {
   const [product, setProduct] = useState({});
   const [productStyles, setProductStyles] = useState([]);
-  const [selectedStyle, setSelectedStyle] = useState({});
+  const [selectedStyle, setSelectedStyle] = useState({ skus: {} });
 
   useEffect(() => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37311', {
@@ -46,7 +47,7 @@ export default function Overview() {
               setSelectedStyle={setSelectedStyle}
             />
           </div>
-          <div className="addToCart">add to cart</div>
+          <div className="addToCart"><AddToCart style={selectedStyle} /></div>
         </div>
       </div>
       <div className="productDescription"><Description product={product} /></div>
