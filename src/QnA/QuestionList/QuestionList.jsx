@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
-import Question from './Question.jsx';
+import Question from '../Question/Question.jsx';
+import './QuestionList.css';
 
 function QuestionList({ questions }) {
   const [questionRenderCount, setQuestionRenderCount] = useState(2);
@@ -42,8 +43,7 @@ function QuestionList({ questions }) {
     }
     return sortQuestions(returned);
   };
-  console.log('PASSED SORTED Q', questionsSorted);
-  questionsSorted = sortQuestions(questionsSorted);
+
 
   const renderedQuestions = questionsSorted.slice(0, questionRenderCount);
   return (

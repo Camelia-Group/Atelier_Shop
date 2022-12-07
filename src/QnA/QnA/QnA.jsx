@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import QuestionSearch from './QuestionSearch.jsx';
-import QuestionList from './QuestionList.jsx';
+import QuestionSearch from '../QuestionSearch/QuestionSearch.jsx';
+import QuestionList from '../QuestionList/QuestionList.jsx';
+import './QnA.css';
 
 export default function QnA() {
   // const [questions, setQuestions] = useState();
@@ -49,18 +50,13 @@ export default function QnA() {
     },
   },
   ];
-  const style = {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '600px',
-    margin: 'auto',
-  };
+
   const [renderSearch, setRenderSearch] = useState(false);
   const [searchResults, setSearchResults] = useState([{}]);
   const [showMoreAnswers, setShowMoreAnswers] = useState(false);
   return (
-    <div className="questions-answers-container" style={style}>
-      <h2 style={{ fontSize: '12px', color: 'gray', textTransform: 'uppercase' }}>Questions & Answers</h2>
+    <div className="questions-answers-container">
+      <h2 className="questions-answers-header">Questions & Answers</h2>
       <QuestionSearch
         setRenderSearch={setRenderSearch}
         setSearchResults={setSearchResults}

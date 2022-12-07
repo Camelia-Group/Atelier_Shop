@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import './Question.css';
 
 function Question({ question }) {
   const [answerRenderCount, setAnswerRenderCount] = useState(1);
-  const helpfulQuestionStyles = {
-    cursor: 'pointer',
-    background: 'none',
-    border: 'none',
-    padding: 0,
-    font: 'inherit',
-    outline: 'inherit',
-  };
   let answersSorted = [];
   const answerKeys = Object.keys(question.answers);
   const checkSort = (currAnswers) => {
@@ -54,14 +47,14 @@ function Question({ question }) {
   const renderedAnswers = answersSorted.slice(0, answerRenderCount);
   return (
     <div className="question">
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', border: '1px solid black' }}>
+      <div className="question-body-container">
         <div className="question-body" style={{border: '1px solid black'}}>
           <b>{`Q: ${question.question_body}`}</b>
         </div>
-        <div style={{ fontSize: '10px', border: '1px solid black', marginTop: '-5px' }}>
+        <div className="question-helpful-container">
           <p>
             Helpful?&nbsp;
-            <button onClick={() => {}} style={helpfulQuestionStyles} type="button">
+            <button onClick={() => {}} className="question-helpful-btn" type="button">
               Yes
               {`(${question.question_helpfulness})`}
             </button>
@@ -81,18 +74,25 @@ function Question({ question }) {
                   </b>
                 </div>
 
-                <div style={{ fontSize: '10px', border: '1px solid black', marginTop: '-11px', height: '20px' }}>
+                <div className="question-answer-footer-container">
                   <p>
                     Helpful?&nbsp;
-                    <button onClick={() => {}} style={helpfulQuestionStyles} type="button">
+                    <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
+                      Yes
+                      {`(${answer.helpfulness})`}
+                    </button>
+                  </p>
+                  <p>
+                    |&nbsp;
+                    <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
                       Yes
                       {`(${answer.helpfulness})`}
                     </button>
                   </p>
                 </div>
-                <div style={{fontSize: '10px'}}>
+                <div>
                   {
-                    answerKeys > 1 ? <button type="button" style={helpfulQuestionStyles}>LOAD MORE ANSWERS</button> : null
+                    answerKeys > 1 ? <button type="button" className="question-answer-more">LOAD MORE ANSWERS</button> : null
                   }
 
                 </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import './QuestionSearch.css';
 
 function QuestionSearch({ setRenderSearch, setSearchResults, questions }) {
   const [searchTerm, setSearchTerm] = useState('');
