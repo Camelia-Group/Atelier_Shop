@@ -8,6 +8,7 @@ export default function AddToCart({ style }) {
   return (
     <form>
       <select name="size">
+        <option value="" selected disabled hidden>Select Size...</option>
         {skus.map((sku) => { return <option>{sku[1].size}</option>; })}
       </select>
     </form>
