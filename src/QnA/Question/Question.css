@@ -15,21 +15,21 @@
 
 .question-helpful-container {
   font-size: 10px;
-  border: 1px solid black;
-  margin-top: -5px;
+  /* border: 1px solid black; */
+  /* margin-top: -5px; */
 }
 
 .question-body-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
 }
 
 .question-answer-footer-container {
   font-size: 10px;
-  border: 1px solid black;
-  margin-top: -11px;
+  /* border: 1px solid black; */
+  /* margin-top: -11px; */
   height: 20px;
 }

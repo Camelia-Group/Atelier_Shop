@@ -48,17 +48,24 @@ function Question({ question }) {
   return (
     <div className="question">
       <div className="question-body-container">
-        <div className="question-body" style={{border: '1px solid black'}}>
+        <div className="question-body">
           <b>{`Q: ${question.question_body}`}</b>
         </div>
         <div className="question-helpful-container">
-          <p>
+          <span>
             Helpful?&nbsp;
             <button onClick={() => {}} className="question-helpful-btn" type="button">
               Yes
               {`(${question.question_helpfulness})`}
             </button>
-          </p>
+          </span>
+          <span>
+            &nbsp;|&nbsp;
+            <button onClick={() => {}} className="question-helpful-btn" type="button">
+              <u>Add Answer</u>
+            </button>
+          </span>
+
         </div>
       </div>
 
@@ -75,20 +82,26 @@ function Question({ question }) {
                 </div>
 
                 <div className="question-answer-footer-container">
-                  <p>
-                    Helpful?&nbsp;
+                  <span>
+                    by
+                    {console.log(answer, 'answer')}
+                    {answer.answerer_name === 'Seller' ? <b>&nbsp;Seller</b> : answer.answerer_name}
+                    &nbsp;|
+                  </span>
+                  <span>
+                    &nbsp;Helpful?&nbsp;
                     <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
                       Yes
                       {`(${answer.helpfulness})`}
+                      &nbsp;
                     </button>
-                  </p>
-                  <p>
-                    |&nbsp;
+                  </span>
+                  <span>
+                    | &nbsp;
                     <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
-                      Yes
-                      {`(${answer.helpfulness})`}
+                      <u>Report</u>
                     </button>
-                  </p>
+                  </span>
                 </div>
                 <div>
                   {
