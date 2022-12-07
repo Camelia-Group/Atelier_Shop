@@ -8,7 +8,8 @@ const axios = require('axios');
 
 export default function Overview() {
   const [product, setProduct] = useState({});
-  const [productStyle, setProductStyle] = useState([]);
+  const [productStyles, setProductStyles] = useState([]);
+  const [selectedStyle, setSelectedStyle] = useState({});
 
   useEffect(() => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37311', {
@@ -23,7 +24,7 @@ export default function Overview() {
           Authorization: process.env.API_KEY,
         },
       }).then((response) => {
-        setProductStyle(response.data.results);
+        setProductStyles(response.data.results);
       });
     });
   }, []);
@@ -38,7 +39,13 @@ export default function Overview() {
         <div className="image">image div</div>
         <div className="sidebarDiv">
           <div className="productDetails"><Details product={product} /></div>
-          <div className="styleSelector"><StyleSelector styles={productStyle} /></div>
+          <div className="styleSelector">
+            <StyleSelector
+              styles={productStyles}
+              selectedStyle={selectedStyle}
+              setSelectedStyle={setSelectedStyle}
+            />
+          </div>
           <div className="addToCart">add to cart</div>
         </div>
       </div>
