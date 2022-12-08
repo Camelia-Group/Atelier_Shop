@@ -1,8 +1,10 @@
+/* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import Details from './Details.jsx';
 import Description from './Description.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
+import ImageViewer from './ImageViewer.jsx';
 import './Overview.css';
 
 const axios = require('axios');
@@ -38,7 +40,9 @@ export default function Overview() {
     // </div>
     <div id="wrapper">
       <div className="overviewContainer">
-        <div className="image">image div</div>
+        <div className="image">
+          <ImageViewer selectedStyle={selectedStyle} />
+        </div>
         <div className="sidebarDiv">
           <div className="productDetails"><Details product={product} /></div>
           <div className="styleSelector">
