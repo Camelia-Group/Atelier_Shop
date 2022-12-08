@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-export default function SelectSize({ skus, setSelectedSize, setPossibleQuantity }) {
+export default function SelectSize({ skus, setPossibleQuantity, setSku }) {
   const handleSizeChange = (sizeSelected) => {
-    setSelectedSize(sizeSelected);
     skus.forEach((sku) => {
       if (sku[1].size === sizeSelected) {
         const quantitiesListed = [];
@@ -11,6 +10,7 @@ export default function SelectSize({ skus, setSelectedSize, setPossibleQuantity 
           quantitiesListed.push(i);
         }
         setPossibleQuantity(quantitiesListed);
+        setSku(sku[0]);
       }
     });
   };
