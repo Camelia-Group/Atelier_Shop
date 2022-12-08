@@ -26,6 +26,7 @@ export default function Overview() {
         },
       }).then((response) => {
         setProductStyles(response.data.results);
+        setSelectedStyle(response.data.results[0]);
       });
     });
   }, []);
@@ -47,7 +48,7 @@ export default function Overview() {
               setSelectedStyle={setSelectedStyle}
             />
           </div>
-          <div className="addToCart"><AddToCart style={selectedStyle} /></div>
+          <div className="addToCart"><AddToCart selectedStyle={selectedStyle} /></div>
         </div>
       </div>
       <div className="productDescription"><Description product={product} /></div>
