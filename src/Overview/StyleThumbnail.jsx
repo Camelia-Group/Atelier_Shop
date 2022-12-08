@@ -12,6 +12,6 @@ export default function StyleThumbnail({ style, setSelectedStyle }) {
   // still need to figure out how to overlay a checkmark on the style selected
 
   return (
-    <img className="round-image" src={style.photos[0].thumnail_url} onClick={handleClick} />
+    <img className="round-image" src={style.photos[0].thumbnail_url} onClick={handleClick} />
   );
 }
