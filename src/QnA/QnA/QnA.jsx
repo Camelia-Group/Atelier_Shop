@@ -7,6 +7,7 @@ import Modal from '../Modal/Modal.jsx';
 export default function QnA() {
   // const [questions, setQuestions] = useState();
   const [questionModalIsOpen, setQuestionModalIsOpen] = useState(false);
+  const [answerModalIsOpen, setAnswerModalIsOpen] = useState(false);
   const questions = [{
     question_id: 37,
     question_body: 'Why is this product cheaper here than other sites?',
@@ -65,6 +66,9 @@ export default function QnA() {
   const addQuestion = () => {
     setQuestionModalIsOpen(true);
   };
+  const addAnswer = () => {
+    setAnswerModalIsOpen(true);
+  };
   return (
     <div className="questions-answers-container">
       <Modal
@@ -72,6 +76,12 @@ export default function QnA() {
         typeOfModal="question"
         close={() => { setQuestionModalIsOpen(false); }}
       />
+      <Modal
+        isOpen={answerModalIsOpen}
+        typeOfModal="answer"
+        close={() => { setAnswerModalIsOpen(false); }}
+      />
+
       <h2 className="questions-answers-header">Questions & Answers</h2>
       <QuestionSearch
         setRenderSearch={setRenderSearch}
@@ -85,11 +95,13 @@ export default function QnA() {
             showMoreAnswers={showMoreAnswers}
             setShowMoreAnswers={setShowMoreAnswers}
             addQuestion={addQuestion}
+            addAnswer={addAnswer}
           />
         ) : (
           <QuestionList
             questions={questions}
             addQuestion={addQuestion}
+            addAnswer={addAnswer}
           />
         )
       }

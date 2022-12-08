@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Question.css';
 
-function Question({ question }) {
+function Question({ question, addAnswer }) {
   const [answerRenderCount, setAnswerRenderCount] = useState(1);
   let answersSorted = [];
   const answerKeys = Object.keys(question.answers);
@@ -61,7 +61,7 @@ function Question({ question }) {
           </span>
           <span>
             &nbsp;|&nbsp;
-            <button onClick={() => {}} className="question-helpful-btn" type="button">
+            <button onClick={() => { addAnswer() }} className="question-helpful-btn" type="button">
               <u>Add Answer</u>
             </button>
           </span>
