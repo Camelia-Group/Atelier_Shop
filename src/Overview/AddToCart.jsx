@@ -19,6 +19,13 @@ export default function AddToCart({ selectedStyle }) {
 
   const handleAddToCart = () => {
     alert(`An item of sku # ${skuSelected} has been added to the cart`);
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart', { sku_id: skuSelected }, {
+      headers: {
+        Authorization: process.env.API_KEY,
+      },
+    }).then(() => {
+      console.log('Added to cart successfully');
+    });
   };
 
   return (
