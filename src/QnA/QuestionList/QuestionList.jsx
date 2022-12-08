@@ -50,7 +50,7 @@ function QuestionList({ questions, addQuestion, addAnswer }) {
   return (
     <div className="question-list">
       {
-        renderedQuestions.map((question, index) => {
+        renderedQuestions.map((question) => {
           console.log('QID', question.question_id);
           return (
             <Question key={question.question_id} question={question} addAnswer={addAnswer} />

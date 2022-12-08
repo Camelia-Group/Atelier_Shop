@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import './QuestionSearch.css';
+import icon from './../Images/search.png'
 
 function QuestionSearch({ setRenderSearch, setSearchResults, questions }) {
   const [searchTerm, setSearchTerm] = useState('');
+
   function handleOnChange(e) {
     setSearchTerm(e.target.value);
   }
@@ -12,10 +14,12 @@ function QuestionSearch({ setRenderSearch, setSearchResults, questions }) {
     setSearchResults(questions.filter((question) => question.question_body.includes(searchTerm)));
   }
   return (
-    <>
+    <div className="search-container">
       <input type="text" onChange={handleOnChange} placeholder="Search for a question!" />
-      <button type="button" onClick={handleOnClick}>Submit</button>
-    </>
+      <button type="button" onClick={handleOnClick}>
+        <img src={icon} alt="Search Icon" />
+      </button>
+    </div>
   );
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Modal.css';
 
-function Modal({ isOpen, typeOfModal, close, submitQuestion, product}) {
+function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnswer}) {
   const [body, setBody] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
@@ -54,7 +54,7 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product}) {
               <input type="text" onChange={(e) => { setNickname(e.target.value); }} placeholder="Example: jackson11" maxLength="60" required />
               <p>What is your email?</p>
               <input type="email" onChange={(e) => { setEmail(e.target.value); }} placeholder="description" maxLength="60" required />
-              <button type="button" onClick={() => submitAnswer({q_id, answer, name: nickname, email})}>Submit answer</button>
+              <button type="button" onClick={() => submitAnswer([q_id, { body, name: nickname, email }])}>Submit answer</button>
             </form>
             <button className="close-modal" onClick={close} type="button">
               ❌

@@ -3,6 +3,7 @@ import QuestionSearch from '../QuestionSearch/QuestionSearch.jsx';
 import QuestionList from '../QuestionList/QuestionList.jsx';
 import './QnA.css';
 import Modal from '../Modal/Modal.jsx';
+import axios from 'axios';
 
 export default function QnA() {
   // const [questions, setQuestions] = useState();
@@ -69,17 +70,35 @@ export default function QnA() {
   const addAnswer = () => {
     setAnswerModalIsOpen(true);
   };
+  const submitAnswer = (info) => {
+    // axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${info[0]}/answers`, info[1])
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
+    //   .catch((err) => { console.error(err) })
+    // return null;
+  }
+  const submitQuestion = (info) => {
+    // axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions`, info)
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
+    //   .catch((err) => { console.error(err) })
+    // return null;
+  }
   return (
     <div className="questions-answers-container">
       <Modal
         isOpen={questionModalIsOpen}
         typeOfModal="question"
         close={() => { setQuestionModalIsOpen(false); }}
+        submitQuestion={submitQuestion}
       />
       <Modal
         isOpen={answerModalIsOpen}
         typeOfModal="answer"
         close={() => { setAnswerModalIsOpen(false); }}
+        submitAnswer={submitAnswer}
       />
 
       <h2 className="questions-answers-header">Questions & Answers</h2>
