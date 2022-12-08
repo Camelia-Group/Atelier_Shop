@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Question from '../Question/Question.jsx';
 import './QuestionList.css';
 
-function QuestionList({ questions }) {
+function QuestionList({ questions, addQuestion }) {
   const [questionRenderCount, setQuestionRenderCount] = useState(2);
 
   let questionsSorted = [];
@@ -43,14 +43,23 @@ function QuestionList({ questions }) {
     }
     return sortQuestions(returned);
   };
-
+  questionsSorted = sortQuestions(questionsSorted);
 
   const renderedQuestions = questionsSorted.slice(0, questionRenderCount);
+  console.log(questions, ' QUESTIONS');
   return (
     <div className="question-list">
+      <h1>{JSON.stringify(questions[0])}</h1>
       {
-        renderedQuestions.map((question) => <Question key={question.id} question={question} />)
+        renderedQuestions.map((question, index) => {
+          console.log('QID', question.question_id);
+          return (<Question key={question.question_id} question={question} />);
+        })
       }
+      <div>
+        <button type="button">MORE ANSWERED QUESTIONS</button>
+        <button type="button" onClick={() => { addQuestion(); }}>ADD A QUESTION</button>
+      </div>
     </div>
   );
 }

@@ -74,7 +74,7 @@ function Question({ question }) {
           renderedAnswers.map((answer) => {
             console.log(answer);
             return (
-              <div>
+              <div key={answer.id}>
                 <div>
                   <b>
                     {`A: ${answer.body}`}
@@ -85,7 +85,7 @@ function Question({ question }) {
                   <span>
                     by
                     {console.log(answer, 'answer')}
-                    {answer.answerer_name === 'Seller' ? <b>&nbsp;Seller</b> : answer.answerer_name}
+                    {answer.answerer_name === 'Seller' ? <b>&nbsp;Seller</b> : ` ${answer.answerer_name}`}
                     &nbsp;|
                   </span>
                   <span>
@@ -121,7 +121,8 @@ function Question({ question }) {
 export default Question;
 
 Question.propTypes = {
-  question: PropTypes.objectOf(PropTypes.shape({
+  question: PropTypes.shape({
+    question_id: PropTypes.number.isRequired,
     question_body: PropTypes.string.isRequired,
     question_date: PropTypes.string.isRequired,
     asker_name: PropTypes.string.isRequired,
@@ -137,6 +138,6 @@ Question.propTypes = {
         url: PropTypes.string,
       })),
     })),
-  })).isRequired,
+  }).isRequired,
 
 };

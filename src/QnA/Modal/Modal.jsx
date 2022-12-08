@@ -1,43 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Modal.css';
 
-const Modal = () => {
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(!modal);
-  }
-
-  if(modal) {
-    document.body.classList.add('active-modal')
-  } else {
-    document.body.classList.remove('active-modal')
-  }
-
-  return(
-    <>
-      <button onClick={toggleModal} className="btn-modal">Modal Button</button>
-
-      {modal && (
+function Modal({ isOpen, typeOfModal, close, submit}) {
+  return (
+    <div>
+      {
+      isOpen === true && typeOfModal === 'question' ? (
         <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
+          <div onClick={() => { close(); }} role="presentation" className="overlay" />
           <div className="modal-content">
-            <h2>Hello inside Modal</h2>
-           <form>
-            <input type='text' placeholder="nickname"/>
-            <input type='text' placeholder="email"/>
-            <input type='text' placeholder="description"/>
-            <button>Submit</button>
-           </form>
-            <button className="close-modal" onClick={toggleModal}>
+            <h2>Ask Your Question</h2>
+            <h5>About the [Product name]</h5>
+            <form>
+              <p>Your Question</p>
+              <textarea maxLength="1000" required />
+              <p>What is your nickname?</p>
+              <input type="text" placeholder="Example: jackson11" maxLength="60" required />
+              <p>Your email</p>
+              <input type="email" placeholder="description" maxLength="60" required />
+              <button type="button">Submit question</button>
+            </form>
+            <button className="close-modal" onClick={close} type="button">
               ❌
             </button>
           </div>
         </div>
-      )}
+      ) : <h1>NOT OPEN</h1>
+      }
 
-    </>
-  )
+    </div>
+  );
 }
 
 export default Modal;

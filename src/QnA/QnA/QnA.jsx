@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import QuestionSearch from '../QuestionSearch/QuestionSearch.jsx';
 import QuestionList from '../QuestionList/QuestionList.jsx';
 import './QnA.css';
+import Modal from '../Modal/Modal.jsx';
 
 export default function QnA() {
   // const [questions, setQuestions] = useState();
+  const [questionModalIsOpen, setQuestionModalIsOpen] = useState(false);
   const questions = [{
     question_id: 37,
     question_body: 'Why is this product cheaper here than other sites?',
@@ -54,8 +56,22 @@ export default function QnA() {
   const [renderSearch, setRenderSearch] = useState(false);
   const [searchResults, setSearchResults] = useState([{}]);
   const [showMoreAnswers, setShowMoreAnswers] = useState(false);
+
+  // const handleClose = (inputs) => {
+  //   if (input) {
+
+  //   }
+  // };
+  const addQuestion = () => {
+    setQuestionModalIsOpen(true);
+  };
   return (
     <div className="questions-answers-container">
+      <Modal
+        isOpen={questionModalIsOpen}
+        typeOfModal="question"
+        close={() => { setQuestionModalIsOpen(false); }}
+      />
       <h2 className="questions-answers-header">Questions & Answers</h2>
       <QuestionSearch
         setRenderSearch={setRenderSearch}
@@ -68,10 +84,12 @@ export default function QnA() {
             questions={searchResults}
             showMoreAnswers={showMoreAnswers}
             setShowMoreAnswers={setShowMoreAnswers}
+            addQuestion={addQuestion}
           />
         ) : (
           <QuestionList
             questions={questions}
+            addQuestion={addQuestion}
           />
         )
       }
