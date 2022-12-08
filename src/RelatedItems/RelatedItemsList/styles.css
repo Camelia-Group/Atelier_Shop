@@ -1,0 +1,195 @@
+*, *::after, *::before {
+
+box-sizing: border-box;
+
+}
+
+
+/* :root {
+--OutfitList-padding: .5rem;
+
+
+
+} */
+
+
+
+
+.container {
+display: flex;
+/* justify-content: center; */
+
+
+}
+.OutfitList {
+
+display: flex;
+
+
+width: 80%;
+
+}
+
+.RelatedItems {
+
+  display: flex;
+  /* justify-content: space-between; */
+
+  width: 80%;
+  /* transform: translate(-%); */
+
+  }
+
+
+
+
+
+
+
+  .Card-Container {
+    flex: 0 0 20%;
+
+    max-width: fit-content;
+
+    aspect-ratio: auto;
+    padding: .5rem;
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

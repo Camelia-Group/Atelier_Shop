@@ -1,0 +1,142 @@
+.List-Container {
+
+  display: flex;
+
+  flex-direction: row;
+
+  /* justify-content: space-between; */
+  align-items: center;
+  overflow: hidden;}
+  .Card-Container {
+
+    /* border: 3px solid black; */
+    flex: 0 0 25%;/* width: 30%; */
+    padding: .5rem;
+    aspect-ratio: 16 / 9;
+  max-width: 31%}
+
+  .Card-Container {
+    display: flex;
+    flex-direction: column;
+    /* height: 350px; */
+
+  }
+  .ItemPic {
+
+    flex-basis: 70%;
+    position: relative;
+
+  max-width: 100%;}
+
+  .OtherSpecs {
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-name {
+    font-size: medium;
+
+
+    font-weight: bold;
+
+  }
+
+  .price {
+
+  }
+
+  .leftArrow {
+    position: absolute;
+
+    top: 75%;
+    left: 40px;
+
+
+    font-size: 3rem;
+    color: #000;
+    cursor: pointer;
+    z-index: 10;
+
+  }
+
+  .rightArrow {
+
+
+
+    top: 75%;
+    right: 40px;
+    cursor: pointer;
+    font-size: 3rem;
+    color: #000;
+
+    z-index: 10;
+    position: absolute;
+  }
+
+
+  .star {
+
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 10px;
+    top: -16px;
+
+
+
+  }
+
+
+  .Add-Items {
+    display: flex;
+    float: left;
+    height: 350px;
+    border: 10px solid black;
+
+
+
+
+  }
+
+  #outfit-adder {
+    height: 150px;
+
+    border-radius: 50%;
+
+
+    width: 290px;}
+
+    .add-Icon {
+
+      height: 95px;
+      width: 75px;
+    }
+
+
+
+    .leftA {
+      position: absolute;
+
+      top: 113%;
+      left: 40px;
+
+      font-size: 3rem;
+      color: #000;
+      cursor: pointer;
+      z-index: 10;
+
+    }
+    .rightA {
+
+
+
+      top: 113%;
+      right: 40px;
+      cursor: pointer;
+      font-size: 3rem;
+      color: #000;
+
+      z-index: 10;
+      position: absolute;
+    }
