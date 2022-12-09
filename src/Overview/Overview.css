@@ -19,7 +19,7 @@ div {
 }
 
 .sidebarDiv {
-  width: 30%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
