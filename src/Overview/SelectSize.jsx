@@ -18,7 +18,11 @@ export default function SelectSize({ skus, setPossibleQuantity, setSku }) {
   return (
     <select name="size" onChange={(event) => handleSizeChange(event.target.value)}>
       <option value="" selected disabled hidden>Select Size...</option>
-      {skus.map((sku) => <option>{sku[1].size}</option>)}
+      {skus.map((sku) => {
+        if (sku[1].quantity > 0) {
+          return <option>{sku[1].size}</option>;
+        }
+      })}
     </select>
   );
 }
