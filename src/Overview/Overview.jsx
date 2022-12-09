@@ -5,6 +5,7 @@ import Description from './Description.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import ImageViewer from './ImageViewer.jsx';
+import ImageGallery from './ImageGallery.jsx';
 import './Overview.css';
 
 const axios = require('axios');
@@ -42,6 +43,7 @@ export default function Overview() {
       <div className="overviewContainer">
         <div className="image">
           <ImageViewer selectedStyle={selectedStyle} />
+          {/* <ImageGallery images={selectedStyle.photos} /> */}
         </div>
         <div className="sidebarDiv">
           <div className="productDetails"><Details product={product} /></div>
