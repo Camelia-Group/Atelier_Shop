@@ -36,7 +36,7 @@ export default function ImageViewer({ selectedStyle }) {
             }}
             onClick={handleExpandClick}
           >
-            <img src={selectedStyle.photos[0].url} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', height: '80%', width: '80%' }} />
+            <img src={selectedStyle.photos[0].url} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', 'max-height': '80%', 'max-width': '80%' }} />
           </div>
       )}
       </div>
