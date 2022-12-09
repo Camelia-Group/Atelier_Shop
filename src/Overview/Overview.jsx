@@ -40,7 +40,7 @@ export default function Overview() {
       <div className="overviewContainer">
         <div className="image">image div</div>
         <div className="sidebarDiv">
-          <div className="productDetails"><Details product={product} /></div>
+          <div className="productDetails"><Details product={product} selectedStyle={selectedStyle} /></div>
           <div className="styleSelector">
             <StyleSelector
               styles={productStyles}
