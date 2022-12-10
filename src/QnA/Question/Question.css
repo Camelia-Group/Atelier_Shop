@@ -40,6 +40,10 @@
   height: 15px;
   margin-top: 10px;
   color: rgb(114, 114, 114);
+
+}
+.question-answer-footer-container {
+  margin-left: 27px;
 }
 
 .question-answer-body-text {

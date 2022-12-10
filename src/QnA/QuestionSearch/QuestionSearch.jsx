@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import './QuestionSearch.css';
 import icon from './../Images/search.png'
-import styled from 'styled-components';
 
 function QuestionSearch({ setRenderSearch, setSearchResults, questions }) {
   const [searchTerm, setSearchTerm] = useState('');

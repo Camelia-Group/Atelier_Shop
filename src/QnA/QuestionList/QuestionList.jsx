@@ -9,7 +9,6 @@ function QuestionList({ questions, addQuestion, addAnswer }) {
   let questionsSorted = [];
   const questionKeys = Object.keys(questions);
   const checkSort = (currQuestions) => {
-    console.log('current Questions', currQuestions);
     if (currQuestions.length === 1) {
       return true;
     }
@@ -26,7 +25,6 @@ function QuestionList({ questions, addQuestion, addAnswer }) {
 
   const sortQuestions = (currQuestions) => {
     const returned = currQuestions;
-    console.log('RETURNED VAL Q', returned);
     if (returned.length === 1) {
       return returned;
     }
@@ -38,7 +36,6 @@ function QuestionList({ questions, addQuestion, addAnswer }) {
       }
     }
     if (checkSort(returned)) {
-      console.log('ARRAY SORTED TRUE', returned);
       return returned;
     }
     return sortQuestions(returned);
@@ -46,23 +43,23 @@ function QuestionList({ questions, addQuestion, addAnswer }) {
   questionsSorted = sortQuestions(questionsSorted);
 
   const renderedQuestions = questionsSorted.slice(0, questionRenderCount);
-  console.log(questions, ' QUESTIONS');
   if (questions.length === 0) {
     return <p>Loading Questions</p>;
   }
   return (
     <div className="question-list">
       {
-        renderedQuestions.map((question) => {
-          console.log('QID', question.question_id);
-          return (
-            <Question key={question.question_id} question={question} addAnswer={addAnswer} />
-          );
-        })
+        renderedQuestions.map((question) => (
+          <Question key={question.question_id} question={question} addAnswer={addAnswer} />
+        ))
       }
       <div className="question-list-buttons">
         <button type="button">MORE ANSWERED QUESTIONS</button>
-        <button type="button" onClick={() => { addQuestion(); }}>ADD A QUESTION</button>
+        <button type="button" onClick={() => { addQuestion(); }}>
+          ADD A QUESTION
+          &nbsp;&nbsp;
+          <span style={{ fontSize: '15px', marginTop: '3px' }}>+</span>
+        </button>
       </div>
     </div>
   );

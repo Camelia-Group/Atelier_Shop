@@ -17,18 +17,21 @@ export default function QnA({ productId = 37311 }) {
   useEffect(() => {
     axios.get('http://localhost:3000/questions/')
       .then((res) => {
-        console.log(res.data.results, 'DATA');
-        setQuestions(res.data.results);
+        setQuestions(res.data.results.filter((question) => {
+          if (Object.keys(question.answers).length !== 0) {
+            return question;
+          }
+        }));
       })
       .catch((err) => {
         console.error(err);
       });
     axios.get(`http://localhost:3000/products/${productId}`)
       .then((data) => {
-        setProductName(data.data.name);
+        setProductName(data.data);
       })
       .catch((err) => {
-        console.error(err);
+        console.error(err, 'ERR PROD NAME');
       });
   }, []);
   // const handleClose = (inputs) => {
@@ -37,26 +40,24 @@ export default function QnA({ productId = 37311 }) {
   //   }
   // };
   const addQuestion = () => {
-    setQuestionModalIsOpen([true, productName, productId]);
+    setQuestionModalIsOpen([true, productId]);
   };
   const addAnswer = (questionId) => {
     setAnswerModalIsOpen([true, questionId, productId]);
   };
   const submitAnswer = (info) => {
-    // axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${info[0]}/answers`, info[1])
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((err) => { console.error(err) })
-    // return null;
-  }
+    axios.post('http://localhost:3000/question/answer', info)
+      .then(() => {
+        setAnswerModalIsOpen([false]);
+      })
+      .catch((err) => { console.error(err); });
+  };
   const submitQuestion = (info) => {
     axios.post('http://localhost:3000/question', info)
-      .then((data) => {
-        console.log('question post success', data);
+      .then(() => {
+        setQuestionModalIsOpen([false]);
       })
-      .catch((err) => { console.error(err) })
-    return null;
+      .catch((err) => { console.error(err); });
   };
   return (
     <div className="questions-answers-container">
@@ -65,7 +66,7 @@ export default function QnA({ productId = 37311 }) {
         typeOfModal="question"
         close={() => { setQuestionModalIsOpen([false]); }}
         submitQuestion={submitQuestion}
-        product={productId}
+        product={productName}
       />
       <Modal
         isOpen={answerModalIsOpen}

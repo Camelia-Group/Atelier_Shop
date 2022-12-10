@@ -7,7 +7,6 @@ function Question({ question, addAnswer }) {
   let answersSorted = [];
   const answerKeys = Object.keys(question.answers);
   const checkSort = (currAnswers) => {
-    // console.log('current Answers', currAnswers);
     if (currAnswers.length === 1) {
       return true;
     }
@@ -24,12 +23,10 @@ function Question({ question, addAnswer }) {
 
   const sortAnswers = (currAnswers) => {
     const returned = currAnswers;
-    // console.log('RETURNED VAL', returned);
     if (returned.length === 1) {
       return returned;
     }
     for (let i = 0; i < returned.length - 1; i += 1) {
-      // console.log(returned);
       if (returned[i].helpfulness < returned[i + 1].helpfulness) {
         const swapped = returned[i];
         returned[i] = returned[i + 1];
@@ -41,10 +38,57 @@ function Question({ question, addAnswer }) {
     }
     return sortAnswers(returned);
   };
-  // console.log('PASSED SORTED', answersSorted);
   answersSorted = sortAnswers(answersSorted);
 
   const renderedAnswers = answersSorted.slice(0, answerRenderCount);
+
+  const parseDate = (date) => {
+    const year = date.slice(0, 4);
+    let month = date.slice(5, 7);
+    let day = date.slice(8, 10);
+    switch (month) {
+      case '01':
+        month = 'January';
+        break;
+      case '02':
+        month = 'Febuary';
+        break;
+      case '03':
+        month = 'March';
+        break;
+      case '04':
+        month = 'April';
+        break;
+      case '05':
+        month = 'May';
+        break;
+      case '06':
+        month = 'June';
+        break;
+      case '07':
+        month = 'July';
+        break;
+      case '08':
+        month = 'August';
+        break;
+      case '09':
+        month = 'September';
+        break;
+      case '10':
+        month = 'October';
+        break;
+      case '11':
+        month = 'November';
+        break;
+      case '12':
+        month = 'December';
+        break;
+      default:
+        break;
+    }
+    return `${month} ${day}, ${year}`;
+  };
+
   return (
     <div className="question">
       <div className="question-body-container">
@@ -76,48 +120,49 @@ function Question({ question, addAnswer }) {
 
       <div className="question-answer-body">
         {
-          renderedAnswers.map((answer) => {
-            console.log(answer);
-            return (
-              <div key={answer.id}>
-                <div>
-                  <b>
-                    A:
-                  </b>
-                  <span className="question-answer-body-text">{answer.body}</span>
-                </div>
-
-                <div className="question-answer-footer-container">
-                  <span>
-                    by
-                    {console.log(answer, 'answer')}
-                    {answer.answerer_name === 'Seller' ? <b>&nbsp;Seller</b> : ` ${answer.answerer_name}`}
-                    &nbsp;|
-                  </span>
-                  <span>
-                    &nbsp;Helpful?&nbsp;
-                    <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
-                      <u>Yes</u>
-                      {`(${answer.helpfulness})`}
-                      &nbsp;
-                    </button>
-                  </span>
-                  <span>
-                    | &nbsp;
-                    <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
-                      <u>Report</u>
-                    </button>
-                  </span>
-                </div>
-                <div className="question-answer-more-container">
-                  {
-                    answerKeys.length > 2 ? <button type="button" className="question-answer-more">LOAD MORE ANSWERS</button> : null
-                  }
-
-                </div>
+          renderedAnswers.map((answer) => (
+            <div key={answer.id}>
+              {console.log(parseDate(answer.date), answer.date)}
+              <div>
+                <b>
+                  A:
+                </b>
+                <span className="question-answer-body-text">{answer.body}</span>
               </div>
-            );
-          })
+
+              <div className="question-answer-footer-container">
+                <span>
+                  by
+                  {answer.answerer_name === 'Seller' ? <b>&nbsp;Seller</b> : ` ${answer.answerer_name}`}
+                  ,&nbsp;
+                  {
+                  parseDate(answer.date)
+                  }
+                  &nbsp;|
+                </span>
+                <span>
+                  &nbsp;Helpful?&nbsp;
+                  <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
+                    <u>Yes</u>
+                    {`(${answer.helpfulness})`}
+                    &nbsp;
+                  </button>
+                </span>
+                <span>
+                  | &nbsp;
+                  <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
+                    <u>Report</u>
+                  </button>
+                </span>
+              </div>
+              <div className="question-answer-more-container">
+                {
+                  answerKeys.length > 2 ? <button type="button" className="question-answer-more">LOAD MORE ANSWERS</button> : null
+                }
+
+              </div>
+            </div>
+          ))
         }
 
       </div>
