@@ -28,10 +28,10 @@ const productSwitcher = ({productId, outfitList}) => {
 
 return (<>
 
+{/* key={Productid} */}
 
 
-
-<div className="Card-Container" key={Productid} onClick={productSwitcher}>
+<div className="Card-Container"  onClick={productSwitcher}>
 
   <div className="ItemPic"><AiOutlineStar className="star" onClick={console.log('open modal')}/><img src={ItemToCard.image}></img></div>
     <div className="OtherSpecs">
