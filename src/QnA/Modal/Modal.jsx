@@ -9,7 +9,7 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
   return (
     <div>
       {
-      isOpen === true && typeOfModal === 'question' ? (
+      isOpen[0] === true && typeOfModal === 'question' ? (
         <div className="modal">
           <div onClick={() => { close(); }} role="presentation" className="overlay" />
           <div className="modal-content">
@@ -17,7 +17,7 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
             <h5>About the [Product name]</h5>
             <form>
               <p>Your Question</p>
-              <textarea maxLength="1000" onChange={(e) => { setBody(e.target.value); }} required />
+              <textarea rows="5" maxLength="1000" onChange={(e) => { setBody(e.target.value); }} required />
               <p>What is your nickname?</p>
               <input type="text" onChange={(e) => { setNickname(e.target.value); }} placeholder="Example: jackson11" maxLength="60" required />
               <p>Your email</p>
@@ -41,7 +41,7 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
       ) : null
       }
       {
-      isOpen === true && typeOfModal === 'answer' ? (
+      isOpen[0] === true && typeOfModal === 'answer' ? (
         <div className="modal">
           <div onClick={() => { close(); }} role="presentation" className="overlay" />
           <div className="modal-content">

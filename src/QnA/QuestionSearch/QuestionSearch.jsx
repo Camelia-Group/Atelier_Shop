@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import './QuestionSearch.css';
 import icon from './../Images/search.png'
+import styled from 'styled-components';
 
 function QuestionSearch({ setRenderSearch, setSearchResults, questions }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,9 +16,9 @@ function QuestionSearch({ setRenderSearch, setSearchResults, questions }) {
   }
   return (
     <div className="search-container">
-      <input type="text" onChange={handleOnChange} placeholder="Search for a question!" />
+      <input type="text" onChange={handleOnChange} placeholder="Have a question? Search for answers…" />
       <button type="button" onClick={handleOnClick}>
-        <img src={icon} alt="Search Icon" />
+        <img src={icon} className="search-icon" alt="Search Icon" />
       </button>
     </div>
   );

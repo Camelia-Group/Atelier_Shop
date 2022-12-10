@@ -4,7 +4,7 @@ import Question from '../Question/Question.jsx';
 import './QuestionList.css';
 
 function QuestionList({ questions, addQuestion, addAnswer }) {
-  const [questionRenderCount, setQuestionRenderCount] = useState(2);
+  const [questionRenderCount, setQuestionRenderCount] = useState(4);
 
   let questionsSorted = [];
   const questionKeys = Object.keys(questions);
@@ -47,6 +47,9 @@ function QuestionList({ questions, addQuestion, addAnswer }) {
 
   const renderedQuestions = questionsSorted.slice(0, questionRenderCount);
   console.log(questions, ' QUESTIONS');
+  if (questions.length === 0) {
+    return <p>Loading Questions</p>;
+  }
   return (
     <div className="question-list">
       {
@@ -57,7 +60,7 @@ function QuestionList({ questions, addQuestion, addAnswer }) {
           );
         })
       }
-      <div>
+      <div className="question-list-buttons">
         <button type="button">MORE ANSWERED QUESTIONS</button>
         <button type="button" onClick={() => { addQuestion(); }}>ADD A QUESTION</button>
       </div>

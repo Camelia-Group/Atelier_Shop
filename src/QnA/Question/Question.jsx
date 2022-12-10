@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Question.css';
 
 function Question({ question, addAnswer }) {
-  const [answerRenderCount, setAnswerRenderCount] = useState(1);
+  const [answerRenderCount, setAnswerRenderCount] = useState(2);
   let answersSorted = [];
   const answerKeys = Object.keys(question.answers);
   const checkSort = (currAnswers) => {
@@ -49,19 +49,24 @@ function Question({ question, addAnswer }) {
     <div className="question">
       <div className="question-body-container">
         <div className="question-body">
-          <b>{`Q: ${question.question_body}`}</b>
+          <b>
+            Q:
+          </b>
+          <span className="question-body-text">
+            <b>{question.question_body}</b>
+          </span>
         </div>
         <div className="question-helpful-container">
           <span>
             Helpful?&nbsp;
             <button onClick={() => {}} className="question-helpful-btn" type="button">
-              Yes
+              <u>Yes</u>
               {`(${question.question_helpfulness})`}
             </button>
           </span>
           <span>
             &nbsp;|&nbsp;
-            <button onClick={() => { addAnswer() }} className="question-helpful-btn" type="button">
+            <button onClick={() => { addAnswer(question.question_id); }} className="question-helpful-btn" type="button">
               <u>Add Answer</u>
             </button>
           </span>
@@ -77,8 +82,9 @@ function Question({ question, addAnswer }) {
               <div key={answer.id}>
                 <div>
                   <b>
-                    {`A: ${answer.body}`}
+                    A:
                   </b>
+                  <span className="question-answer-body-text">{answer.body}</span>
                 </div>
 
                 <div className="question-answer-footer-container">
@@ -91,7 +97,7 @@ function Question({ question, addAnswer }) {
                   <span>
                     &nbsp;Helpful?&nbsp;
                     <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
-                      Yes
+                      <u>Yes</u>
                       {`(${answer.helpfulness})`}
                       &nbsp;
                     </button>
@@ -105,7 +111,7 @@ function Question({ question, addAnswer }) {
                 </div>
                 <div className="question-answer-more-container">
                   {
-                    answerKeys > 1 ? <button type="button" className="question-answer-more">LOAD MORE ANSWERS</button> : null
+                    answerKeys.length > 2 ? <button type="button" className="question-answer-more">LOAD MORE ANSWERS</button> : null
                   }
 
                 </div>
