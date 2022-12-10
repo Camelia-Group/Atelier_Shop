@@ -4,7 +4,7 @@ import Styles from '../RelatedItemsList/styles.css'
 
 import {AiOutlineStar, AiTwotoneStar} from 'react-icons/ai'
 
-// import
+import App from '../../index.jsx'// import
 export default function ProductCard({ItemToCard}) {
 
 // console.log('ItemToCard')
@@ -13,8 +13,11 @@ const ToggleStar = function(e) {
 e.preventDefault();
 }
 
+const productSwitcher = ({productId, outfitList}) => {
 
 
+<App productId={productId} outfitList={outfitList}/>
+}
 
 
 
@@ -28,7 +31,7 @@ return (<>
 
 
 
-<div className="Card-Container">
+<div className="Card-Container" key={Productid} onClick={productSwitcher}>
 
   <div className="ItemPic"><AiOutlineStar className="star" onClick={console.log('open modal')}/><img src={ItemToCard.image}></img></div>
     <div className="OtherSpecs">

@@ -12,14 +12,14 @@ import TestOutfitItem from '../TestOutfitItemToAdd.jsx'
 export default function OutfitList({Outfit}) {
 const [listOfOutfitItems, setListofOutfitItems] = useState(Outfit)
 return (<>
-<div className="Container">
+<div className="ContainerPlace">
 <div className="List-Container OutfitList">
 
 
 
 
-
-  <FaArrowAltCircleLeft className='leftA'/> <div className="Add-Items">
+  <div className="TheArrows LeftArrow"><FaArrowAltCircleLeft className='leftAIcon'/> </div>
+  <div className="Add-Items">
 
     <div><button id="outfit-adder" onClick={(e) => {e.preventDefault(); console.log(TestOutfitItem); setListofOutfitItems([...listOfOutfitItems, TestOutfitItem])}}><AiOutlinePlusCircle class="add-Icon"/></button></div>
   </div>
@@ -28,7 +28,7 @@ return (<>
 
   return(<><ProductCard ItemToCard={OutfitItem}/></>)
 
-})}<FaArrowAltCircleRight className='rightA'/></div></div>
+})}</div><div className="TheRightArrows"><FaArrowAltCircleRight className="rightAIcon"/> </div></div>
 
 </>)
 

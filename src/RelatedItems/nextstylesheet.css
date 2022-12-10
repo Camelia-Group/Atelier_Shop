@@ -1,0 +1,283 @@
+*, *::after, *::before {
+
+  box-sizing: border-box;
+
+  }
+
+
+  :root {
+  --OutfitList-padding: 3.5rem;
+
+
+
+  }
+
+
+
+
+  .ContainerPlace {
+  display: flex;
+  /* justify-content: center; */
+  overflow: hidden;
+  width: 90%;
+  }
+  .OutfitList {
+
+  display: flex;
+
+
+  width: calc(100% - 3 * var(--OutfitList-padding));
+
+  }
+
+  .RelatedItems {
+
+    display: flex;
+    /* justify-content: space-between; */
+
+    width: calc(100% - 3 * var(--OutfitList-padding));
+    /* transform: translate(-%); */
+
+    }
+
+
+
+
+
+
+
+    .Card-Container {
+      flex: 0 0 20%;
+
+      max-width: fit-content;
+      aspect-ratio: auto;
+      padding: .5rem;
+
+
+
+    }
+
+
+  .TheArrows {
+
+  width: var(--OutfitList-padding);
+
+
+
+  background-color: rgba(0, 0, 0, .3);
+
+  z-index: 10;
+  padding: .25rem;
+
+
+  }
+
+  .leftAIcon {
+
+
+  width: 50px;
+
+  height: 100px;
+
+
+
+
+
+
+
+  }
+  .Add-Items {
+    display: flex;
+    float: left;
+    height: 350px;
+    border: 10px solid black;
+
+
+
+
+  }
+
+  #outfit-adder {
+    height: 150px;
+
+    border-radius: 50%;
+
+
+    width: 290px;}
+
+    .add-Icon {
+
+      height: 95px;
+      width: 75px;
+    }
+
+    .rightAIcon {
+
+
+      width: 50px;
+
+      height: 100px;
+
+
+
+
+
+
+
+      }
+
+  .TheRightArrows {
+
+    width: 10%;
+
+
+
+    background-color: rgba(0, 0, 0, .3);
+
+    z-index: 10;
+    padding: .25rem;
+
+
+  }
+
+
+
+
+  .TheArrows:hover {
+    background-color: rgba(0, 0, 0, .5);
+
+    cursor: pointer;
+  }
+
+  .TheRightArrows:hover {
+    background-color: rgba(0, 0, 0, .5);
+    cursor: pointer;
+
+  }
+
+
+  .OutfitList, .RelatedItems {
+
+  --carouselNum: 0;
+
+  transform: translateX(calc(var(--carouselNum) * -35%));
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

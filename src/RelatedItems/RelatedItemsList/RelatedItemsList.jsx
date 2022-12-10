@@ -5,9 +5,15 @@ import ProductCard from '../ProductCard/ProductCard.jsx'
 import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa'
 
 import './styles.css'
+import axios from 'axios'
+
+
+
+
 export default function RelatedItemsList({Items}) {
   const [relatedItems, setRelatedItems] = useState(Items)
 const [current, setCurrent] = useState(0)// const [relatedItems, setRelatedItems] = useState([])
+
 
 const length = Items.length
 
@@ -17,21 +23,24 @@ const length = Items.length
 
 
 
+
+
+
 return (<>
-<div className="Container">
+<div className="ContainerPlace">
 
 
 
 
 <div className="List-Container RelatedItems">
-  <FaArrowAltCircleLeft className='leftArrow'/>
+<div className="TheArrows LeftArrow"><FaArrowAltCircleLeft className='leftAIcon'/> </div>
 
-  <FaArrowAltCircleRight className='rightArrow'/>
+
 
   {relatedItems.map((Item, index)=> {
 
    return(<> <ProductCard ItemToCard={Item}/></>)
-  })} </div></div>
+  })} </div><div className="TheRightArrows"><FaArrowAltCircleRight className='rightAIcon' /> </div></div>
 
 
 

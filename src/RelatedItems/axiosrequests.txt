@@ -1,0 +1,120 @@
+import axios from 'axios'
+
+1) Somehow the id of the product currently being viewed must be passed into my <Related Items/> component.
+
+  -as a prop? productId={product_id}
+
+2) Once in my <Related Items/> component, a GET request must be sent to obtain the list of related items
+  -GET (url: /products/::productId::/related)
+
+  Axios Request format: (ex productId: 31313)
+
+    axios.get('/products/31313/related, {
+      Header: {
+
+        Authentication: **GITHUB TOKEN**
+      },
+
+      params: {
+        product_id: ${productId}
+      }
+    }).then( (response) => {
+      :::set a varaiable equal to the response.body/array
+      --OR--
+      call a function on each id to retrieve the needed info for their product cards
+
+    })
+
+
+To get a product card, the info needed:
+
+product name - /products/product_id
+
+
+
+category - /products/product_id
+
+
+price - /products/product_id & /products/product_id/styles
+
+
+
+
+star rating - /reviews/meta
+  *header: authorization: github token
+
+  *parameter: product_id: productId
+data format ex: RATINGS RES.DATA
+
+product image - /product/::productId::/styles
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RES.DATAAAA EXAMPLE
+
+{
+
+
+
+
+  "product_id": "37315",
+
+  "ratings": {
+    "1": "33",
+    "2": "7",
+    "3": "20", //will need to (ratings.1 + ratings.2 + ratings.3 + ratings.4 + ratings.5) // 5 to get avg star rating
+
+
+
+    "4": "14",
+    "5": "20"
+
+
+  },
+
+  "recommended": {
+    "false": "40",
+    "true": "54"
+  },
+  "characteristics": { to access: characteristics.()
+
+
+
+"Size": {
+      "id": 125044,
+
+      "value": "2.7375000000000000"
+    },
+    "Width": {
+      "id": 125045,
+      "value": "2.6790123456790123"
+    },
+    "Comfort": {
+      "id": 125046,
+      "value": "3.0131578947368421"
+    },
+    "Quality": {
+      "id": 125047,
+      "value": "2.9210526315789474"
+    }
+  }
+}
+
+
+Question: how is the main product shown on the screen?
+
+Question: how best to design onclick/reroute event for related items cards/outfit list cards, to rerender page to new product overview display
+
+Question:
+
