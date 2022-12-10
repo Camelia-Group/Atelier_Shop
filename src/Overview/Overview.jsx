@@ -46,7 +46,7 @@ export default function Overview() {
           {/* <ImageGallery images={selectedStyle.photos} /> */}
         </div>
         <div className="sidebarDiv">
-          <div className="productDetails"><Details product={product} /></div>
+          <div className="productDetails"><Details product={product} selectedStyle={selectedStyle} /></div>
           <div className="styleSelector">
             <StyleSelector
               styles={productStyles}
