@@ -3,7 +3,7 @@ import React from 'react';
 import Rating from './RatingBreakdown/Rating.jsx';
 import Tiles from './ReviewList/Tiles.jsx';
 import Factors from './Factors/Factors.jsx';
-import './Reviews.css';
+// import './Reviews.css';
 
 export default function Reviews() {
   return (
