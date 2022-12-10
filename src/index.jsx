@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { createRoot } from 'react-dom/client';
 import Overview from './Overview/Overview.jsx';
 import QnA from './QnA/QnA.jsx';
@@ -9,14 +9,18 @@ import Reviews from './Reviews/Reviews.jsx';
 
 const root = createRoot(document.getElementById('root'));
 
-// Huzzah for jsx!
+
 function App() {
+
+  const [productID, setProductID] = useState(37311);
+
+
   return (
     <div>
-      <div><Overview /></div>
+      {/* <div><Overview /></div>
       <div><QnA /></div>
-      <div><RelatedItems /></div>
-      <div><Reviews /></div>
+      <div><RelatedItems /></div> */}
+      <div><Reviews productID={productID}/></div>
     </div>
   );
 }

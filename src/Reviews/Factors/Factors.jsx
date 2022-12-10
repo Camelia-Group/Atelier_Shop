@@ -1,19 +1,11 @@
 import React from 'react';
 import './Factors.css';
-export default function Factors() {
+export default function Factors({metaData}) {
 
 
   return(
     <>
-    <div className="factors">
-    <table>
-      <tr><th>Size</th></tr>
-      <tr><th>Comfort</th></tr>
-      <tr><th>Fit</th></tr>
 
-
-    </table>
-    </div>
     </>
   )
 };

@@ -1,25 +1,45 @@
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import Rating from './RatingBreakdown/Rating.jsx';
 import Tiles from './ReviewList/Tiles.jsx';
 import Factors from './Factors/Factors.jsx';
 import './Reviews.css';
 
-export default function Reviews() {
+
+export default function Reviews({productID, metaData}) {
+
+  const [productReviews, setProductReviews] = useState([]);
+  const [meta, setMeta] = useState({});
+
+  const getReviews = () => {
+    axios.get(`/reviews/${productID}`)
+    .then((result) => {
+        setProductReviews(result.data);
+        // console.log(result.data);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+  };
+
+  useEffect(() => {
+    getReviews();
+  }, []);
+
   return (
     <>
       <section className="container flex">
         <div className="left">
-        <div className="one">Rating:<Rating /></div>
-        <div className="three">Factors:<Factors /></div>
+        <Rating productReviews={productReviews}/>
+        <Factors meta={meta}/>
 
         </div>
 
-        <div className="two">ReviewList:<Tiles /></div>
+       <Tiles productReviews={productReviews}/>
 
 
       </section>
-      <div>Hello </div>
     </>
   );
 }

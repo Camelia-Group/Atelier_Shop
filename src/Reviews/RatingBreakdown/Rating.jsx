@@ -1,16 +1,41 @@
 import React from 'react';
 import './Rating.css';
 
-const Rating = () => {
+const Rating = ({productReviews}) => {
+
+const avgRating = () => {
+  let total = 0;
+  productReviews.forEach((review) => {
+    total += review.rating
+  })
+  return total/productReviews.length
+}
+
+const totalRating = () => {
+  let obj = {
+    5: 0,
+    4: 0,
+    3: 0,
+    2: 0,
+    1: 0,
+  };
+  productReviews.forEach((review) => {
+    obj[review.rating]++;
+  })
+  return obj;
+}
 
   return (
     <>
-    <div className="ratingContainer">
-  <div className="bar bar-5">5 ★</div>
-  <div className="bar bar-4">4 ★</div>
-  <div className="bar bar-3">3 ★</div>
-  <div className="bar bar-2">2 ★</div>
-  <div className="bar bar-1">1 ★</div>
+  <div className="ratingContainer">
+    <h2>Rating and Reviews</h2>
+    <h5>{avgRating()} ★★★★★</h5>
+<h5>100% of reviews recommend this product</h5>
+  <div>5stars: {totalRating()[5]} ★★★★★ </div>
+  <div>4stars: {totalRating()[4]} ★★★★ </div>
+  <div>3stars: {totalRating()[3]} ★★★ </div>
+  <div>2stars: {totalRating()[2]} ★★ </div>
+  <div>1stars: {totalRating()[1]} ★ </div>
   </div>
     </>
   )
@@ -19,26 +44,3 @@ const Rating = () => {
 
 export default Rating;
 
-
-
-// Average Rating
-// 1 - 5 star Reviews in a range bar thing
-// Filter Selected for star reviews
-{/* <h2>Rating System</h2>
-<h1>3.5
-  <span>★★☆☆☆</span>
-</h1>
-<h5>100% of reviews recommend this product</h5>
-
-<div>
-  <ul>
-    <li className="bar-5">5 stars .....</li>
-    <li className="bar-4">4 stars .....</li>
-    <li className="bar-3">3 stars .....</li>
-    <li className="bar-2">2 stars .....</li>
-    <li className="bar-1">1 stars .....</li>
-  </ul>
-</div> */}
-
-
-<div>3 ★</div>
