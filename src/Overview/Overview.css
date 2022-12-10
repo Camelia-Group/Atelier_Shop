@@ -53,14 +53,30 @@ div {
   box-shadow: 10px 10px 5px #888888;
 }
 
-.full_image {
+.image-gallery {
   max-height: 100%;
   max-width: 100%;
   display: block;
   margin: auto;
 }
 
-.test {
-  width: 100%;
-  height: 100%;
+.selected-image {
+  height: 600px;
+  width: 692px;
+  display: flex;
+  justify-content: center;
+}
+
+.image-thumbnail-nav {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+}
+
+.image-thumbnail {
+  height: 50px;
+  width: 50px;
 }

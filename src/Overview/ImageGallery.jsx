@@ -1,21 +1,24 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-else-return */
 import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
 
-export default function ImageGallery({ images }) {
-  if (images !== undefined) {
+export default function ImageGallery({ selectedImage, setSelectedImage, selectedStyle }) {
+  if (selectedStyle.photos !== undefined) {
     return (
-      <Carousel
-        showThumbs={true}
-        showStatus={false}
-        showArrows={true}
-        infiniteLoop={false}
-        axis="vertical"
-      >
-        {images.map(image => (
-          <img src={image.url} alt="" height="200px" width="200px" />
-        ))}
-      </Carousel>
+      <div className="image-gallery">
+        <div className="selected-image">
+          <img src={selectedImage} alt="" style={{ 'max-width': '100%', 'max-height': '100%' }} />
+        </div>
+        <div className="image-thumbnail-nav">
+          {selectedStyle.photos.map((image, index) => (
+            <img src={image.thumbnail_url} onClick={()=>setSelectedImage(image.url)} className="image-thumbnail" />
+          ))}
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <p>Placeholder</p>
     );
   }
-  return <p>placeholder</p>;
 }
