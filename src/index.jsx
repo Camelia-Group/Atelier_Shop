@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/extensions */
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Overview from './Overview/Overview.jsx';
