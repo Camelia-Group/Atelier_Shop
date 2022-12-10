@@ -45,7 +45,7 @@ function Question({ question, addAnswer }) {
   const parseDate = (date) => {
     const year = date.slice(0, 4);
     let month = date.slice(5, 7);
-    let day = date.slice(8, 10);
+    const day = date.slice(8, 10);
     switch (month) {
       case '01':
         month = 'January';
@@ -122,7 +122,6 @@ function Question({ question, addAnswer }) {
         {
           renderedAnswers.map((answer) => (
             <div key={answer.id}>
-              {console.log(parseDate(answer.date), answer.date)}
               <div>
                 <b>
                   A:
