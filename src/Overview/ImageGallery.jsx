@@ -38,10 +38,11 @@ export default function ImageGallery({ selectedImage, setSelectedImage, selected
     return (
       <div className="image-gallery">
         <div className="selected-image">
+          <input type="button" onClick={() => handlePreviousClick()} value="previous" />
           <img src={selectedImage} alt="" style={{ 'max-width': '100%', 'max-height': '100%' }} />
+          <input type="button" onClick={() => handleNextClick()} value="next" />
         </div>
         <div className="image-thumbnail-nav">
-          <input type="button" onClick={() => handlePreviousClick()} value="previous" />
           {selectedStyle.photos.map((image, index) => {
             if (index === photoIndex) {
               return (<img
@@ -55,7 +56,6 @@ export default function ImageGallery({ selectedImage, setSelectedImage, selected
                 className="image-thumbnail" />);
             }
             })}
-          <input type="button" onClick={() => handleNextClick()} value="next" />
         </div>
       </div>
     );
