@@ -1,13 +1,20 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-else-return */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function ImageGallery({ selectedImage, setSelectedImage, selectedStyle }) {
+  const [photoIndex, setPhotoIndex] = useState(0);
+
   useEffect(() => {
     if (selectedStyle.photos !== undefined) {
-      setSelectedImage(selectedStyle.photos[0].url);
+      setSelectedImage(selectedStyle.photos[photoIndex].url);
     }
   }, [selectedStyle]);
+
+  const handleThumbnailClick = (url, index) => {
+    setPhotoIndex(index);
+    setSelectedImage(url);
+  };
 
   if (selectedStyle.photos !== undefined) {
     return (
@@ -17,7 +24,7 @@ export default function ImageGallery({ selectedImage, setSelectedImage, selected
         </div>
         <div className="image-thumbnail-nav">
           {selectedStyle.photos.map((image, index) => (
-            <img src={image.thumbnail_url} onClick={()=>setSelectedImage(image.url)} className="image-thumbnail" />
+            <img src={image.thumbnail_url} onClick={()=>handleThumbnailClick(image.url, index)} className="image-thumbnail" />
           ))}
         </div>
       </div>
