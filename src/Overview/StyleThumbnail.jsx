@@ -4,10 +4,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-export default function StyleThumbnail({ style, setSelectedStyle, setSelectedImage }) {
+export default function StyleThumbnail({ style, setSelectedStyle }) {
   const handleClick = () => {
     setSelectedStyle(style);
-    setSelectedImage(style.photos[0].url);
   };
 
   // still need to figure out how to overlay a checkmark on the style selected

@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-else-return */
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function ImageGallery({ selectedImage, setSelectedImage, selectedStyle }) {
+  useEffect(() => {
+    if (selectedStyle.photos !== undefined) {
+      setSelectedImage(selectedStyle.photos[0].url);
+    }
+  }, [selectedStyle]);
+
   if (selectedStyle.photos !== undefined) {
     return (
       <div className="image-gallery">

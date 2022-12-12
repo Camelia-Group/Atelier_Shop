@@ -13,7 +13,7 @@ export default function Overview() {
   const [product, setProduct] = useState({});
   const [productStyles, setProductStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({ skus: {} });
-  const [selectedImage, setSelectedImage] = useState('');
+  const [selectedImage, setSelectedImage] = useState('test');
 
   useEffect(() => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37311', {
