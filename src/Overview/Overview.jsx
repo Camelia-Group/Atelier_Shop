@@ -56,6 +56,7 @@ export default function Overview() {
               styles={productStyles}
               selectedStyle={selectedStyle}
               setSelectedStyle={setSelectedStyle}
+              setSelectedImage={setSelectedImage}
             />
           </div>
           <div className="addToCart"><AddToCart selectedStyle={selectedStyle} /></div>
