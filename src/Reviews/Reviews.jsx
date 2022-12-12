@@ -7,10 +7,12 @@ import Factors from './Factors/Factors.jsx';
 import './Reviews.css';
 
 
-export default function Reviews({productID, metaData}) {
+export default function Reviews({productID}) {
 
   const [productReviews, setProductReviews] = useState([]);
-  const [meta, setMeta] = useState({});
+  // const [meta, setMeta] = useState({});
+
+
 
   const getReviews = () => {
     axios.get(`/reviews/${productID}`)
@@ -23,16 +25,31 @@ export default function Reviews({productID, metaData}) {
     });
   };
 
+  // const getMeta = () => {
+  //   axios.get(`/reviews/meta/${productID}`)
+  //   .then((result) => {
+  //       setMeta(result.data);
+  //       // console.log(result.data);
+  //   })
+  //   .catch((err) => {
+  //       console.log(err);
+  //   });
+  // };
+
   useEffect(() => {
     getReviews();
   }, []);
+
+  // useEffect(() => {
+  //   getMeta();
+  // }, []);
 
   return (
     <>
       <section className="container flex">
         <div className="left">
         <Rating productReviews={productReviews}/>
-        <Factors meta={meta}/>
+        <Factors/>
 
         </div>
 

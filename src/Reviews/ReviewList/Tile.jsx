@@ -5,27 +5,42 @@ import './Tile.css';
 
 
 export default function Tile({ productReview }) {
-  // const recommend = (rec) => {
-  //   let n = Math.floor((parseInt(rec.recommend.true) / (parseInt(rec.recommend.true) + parseInt(rec.recommend.false))) * 100)
-  //   console.log(rec.recommend.true)
-  //   console.log('this is res',n)
-  //   return n;
-  // }
+  const productRecommend = (reviews) => {
+    let recommends = 0;
+    for (let i = 0; i < reviews.length; i++) {
+      if (reviews[i].recommend) {
+         recommends += 1;
+        }
+    }
+    let percentage = recommends / reviews.length * 100;
+    percentage = Math.round(percentage);
+    if (percentage > 99) {
+      percentage = 100;
+    }
+    return percentage;
+  }
+
+
 
 
   return (
     <>
       <div className="review-tile">
        <h5>
-        Rating:{productReview.rating} ★
+        Rating:{productReview.rating} ★★★★★
       </h5>
       <h5>{productReview.reviewer_name}, {productReview.date}</h5>
+
+      <h5>{productReview.summary}</h5>
       <h5>{productReview.body}</h5>
       <h5>{productReview.response}</h5>
-      <h5>Photo List:{productReview.photo}</h5>
+      <h5>Photo List:{productReview.photos.length > 0 ?
+              <div>
+                {productReview.photos}
+              </div> : null}</h5>
 
 
-      {/* <h5>{recommend(productReview)}% of reviews recommended this product</h5> */}
+      <h5>{productRecommend(productReview)}% of reviews recommended this product</h5>
       <h5>Helpful</h5>
       </div>
     </>)

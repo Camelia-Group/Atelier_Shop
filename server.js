@@ -6,13 +6,16 @@ require('dotenv').config();
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, './public')));
 app.use(cors());
 app.use(express.json());
 
 const url = process.env.API_URL;
 const port = process.env.PORT;
 axios.defaults.headers.common.Authorization = process.env.AUTH_KEY;
+
+
+//Rating and Reviews
 
 const getReview = (req, res) => {
   axios.get(

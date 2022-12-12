@@ -18,9 +18,9 @@ export default function Tiles({productReviews}) {
   return (
     <>
       <Sorting />
-      {productReviews.map((productReview, i) =>
+      {/* {productReviews.map((productReview, i) =>
         <Tile productReview={productReview} key={productReview.review_id}/>
-      )}
+      )} */}
       <div>
       <button>More reviews</button>
       <Modal />
