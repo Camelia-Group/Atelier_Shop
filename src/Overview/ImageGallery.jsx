@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-else-return */
 import React, { useState, useEffect } from 'react';
@@ -40,9 +42,19 @@ export default function ImageGallery({ selectedImage, setSelectedImage, selected
         </div>
         <div className="image-thumbnail-nav">
           <input type="button" onClick={() => handlePreviousClick()} value="previous" />
-          {selectedStyle.photos.map((image, index) => (
-            <img src={image.thumbnail_url} onClick={()=>handleThumbnailClick(image.url, index)} className="image-thumbnail" />
-          ))}
+          {selectedStyle.photos.map((image, index) => {
+            if (index === photoIndex) {
+              return (<img
+                src={image.thumbnail_url}
+                onClick={()=>handleThumbnailClick(image.url, index)}
+                className="image-thumbnail-highlighted" />);
+            } else {
+              return (<img
+                src={image.thumbnail_url}
+                onClick={()=>handleThumbnailClick(image.url, index)}
+                className="image-thumbnail" />);
+            }
+            })}
           <input type="button" onClick={() => handleNextClick()} value="next" />
         </div>
       </div>
