@@ -3,7 +3,7 @@
 import React, {useState, useEffect} from 'react';
 import { createRoot } from 'react-dom/client';
 import Overview from './Overview/Overview.jsx';
-import QnA from './QnA/QnA.jsx';
+import QnA from './QnA/QnA/QnA.jsx';
 import RelatedItems from './RelatedItems/RelatedItems.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 
