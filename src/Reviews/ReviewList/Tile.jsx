@@ -34,10 +34,10 @@ export default function Tile({ productReview }) {
       <h5>{productReview.summary}</h5>
       <h5>{productReview.body}</h5>
       <h5>{productReview.response}</h5>
-      <h5>Photo List:{productReview.photos.length > 0 ?
+      {/* <h5>Photo List:{productReview.photos.length > 0 ?
               <div>
                 {productReview.photos}
-              </div> : null}</h5>
+              </div> : null}</h5> */}
 
 
       <h5>{productRecommend(productReview)}% of reviews recommended this product</h5>
