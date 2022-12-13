@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/extensions */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/prop-types */

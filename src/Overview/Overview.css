@@ -80,3 +80,10 @@ div {
   height: 50px;
   width: 50px;
 }
+
+.image-thumbnail-highlighted {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  border-color: red;
+}
