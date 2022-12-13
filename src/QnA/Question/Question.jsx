@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './Question.css';
 import axios from 'axios';
+import { render } from 'react-dom';
 
 function Question({ question, addAnswer }) {
   const [answerRenderCount, setAnswerRenderCount] = useState(2);
@@ -113,7 +114,7 @@ function Question({ question, addAnswer }) {
   };
 
   useEffect(() => {
-    if (answerKeys.length > 2) {
+    if (answersSorted.length > 2) {
       setShowMore([true, 'more']);
     }
   }, []);
@@ -151,7 +152,7 @@ function Question({ question, addAnswer }) {
 
       <div className="question-answer-body">
         {
-          renderedAnswers.map((answer) => (
+          renderedAnswers.map((answer, index) => (
             <div key={answer.id}>
               <div>
                 <b>
@@ -190,10 +191,12 @@ function Question({ question, addAnswer }) {
               <div id={`m${question.question_id}`} className="question-answer-more-container">
 
                 {
-                  showMore[0] && showMore[1] === 'more' ? (
+                  showMore[0] === true && showMore[1] === 'more' && index === answersSorted.length - 1 ? (
                     <button
                       onClick={() => {
-                        if (answerRenderCount >= Object.keys(question.answers)) {
+                        // (index === answerRenderCount - 1 || index === answerRenderCount - 2) &&
+                        if (index === answerRenderCount - 1 || index === answerRenderCount - 2 ) {
+                          alert('TRUE')
                           setAnswerRenderCount(answerRenderCount + 2);
                           setShowMore([true, 'collapse']);
                         } else {
@@ -207,10 +210,11 @@ function Question({ question, addAnswer }) {
                   ) : null
                 }
                 {
-                  showMore[0] && showMore[1] === 'collapse' ? (
+                  showMore[0] === true && showMore[1] === 'collapse' ? (
                     <button onClick={() => { setShowMore([true, 'more']); setAnswerRenderCount(2); }} type="button">COLLAPSE</button>
                   ) : null
                 }
+
               </div>
             </div>
           ))
