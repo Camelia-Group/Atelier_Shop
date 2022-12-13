@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function ExpandedImage({selectedImage, handleThumbnailClick, selectedStyle, handleExpand, handleNextClick, handlePreviousClick, photoIndex}) {
   return (
-    <div className="image-gallery">
-      <div className="selected-image">
+    <div className="expanded-image-gallery">
+      <div className="expanded-selected-image">
         <input type="button" onClick={() => handlePreviousClick()} value="previous" />
         <img src={selectedImage} alt="" style={{ 'width': '100%', 'max-height': '100%' }} />
         <input type="button" onClick={() => handleNextClick()} value="next" />
