@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
 
-export default function Sorting() {
+export default function Sorting({metaData}) {
 
-  const [reviewsSort, setReviewsSort] = useState('');
+  const [reviewsSort, setReviewsSort] = useState('Relevant');
 
   function onChange(event) {
     setReviewsSort(event.target.value);
@@ -13,9 +13,9 @@ export default function Sorting() {
     <>
     <p>777 reviews, sorted by:
      <select value={reviewsSort} onChange={onChange}>
-        <option value="relevant">Relevant</option>
-        <option value="newest">Newest</option>
-        <option value="helpful">Helpful</option>
+        <option value="Relevant">Relevant</option>
+        <option value="Newest">Newest</option>
+        <option value="Helpful">Helpful</option>
       </select>
       </p>
     </>

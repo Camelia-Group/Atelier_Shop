@@ -1,25 +1,28 @@
-div {
+/* div {
   outline: 1px solid red;
-}
+} */
 
 #wrapper {
-  width: 1000px;
-  height: 600px;
+  width: 70%;
+  height: 800px;
   margin: 0 auto;
 }
 
 .overviewContainer {
   display: flex;
+  height: 75%;
+  width: 100%;
 }
 
 .image {
-  width: 70%;
+  width:100%;
 }
 
 .sidebarDiv {
-  width: 30%;
+  width: 35%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 #descriptionWrapper {
@@ -32,4 +35,55 @@ div {
 
 .features {
   width: 30%;
+}
+
+.round-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  border: 2px solid black;
+}
+
+.round-image:hover{
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.image-gallery {
+  max-height: 100%;
+  max-width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.selected-image {
+  height: 600px;
+  width: 692px;
+  display: flex;
+  justify-content: center;
+}
+
+.image-thumbnail-nav {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+}
+
+.image-thumbnail {
+  height: 50px;
+  width: 50px;
+}
+
+.image-thumbnail-highlighted {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  border-color: red;
 }
