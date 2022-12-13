@@ -38,7 +38,7 @@ const getMetaData = (req, res) => {
     {
       params: { product_id: req.params.product_id },
     }).then((result) => {
-    res.status(200).send(result.data.results);
+    res.status(200).send(result.data);
   }).catch((err) => {
     console.log(err);
   });
