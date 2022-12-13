@@ -155,11 +155,10 @@ function Question({ question, addAnswer }) {
       <div className="question-answer-body">
         {
           renderedAnswers.map((answer, index) => {
-            if (index === answersSorted.length - 1 && checkForCollapse ) {
-              setAnswerRenderCount(answerRenderCount + 2);
+            if (JSON.stringify(answer) === JSON.stringify(answersSorted[answersSorted.length - 1]) && showMore[0] === true) {
               setShowMore([true, 'collapse']);
-              console.log('collapse button should be showing')
             }
+
             console.log(index, answersSorted.length - 1, answerRenderCount)
 
             return (
@@ -204,9 +203,7 @@ function Question({ question, addAnswer }) {
                       <button
                         onClick={() => {
                           // (index === answerRenderCount - 1 || index === answerRenderCount - 2) &&
-
                           setAnswerRenderCount(answerRenderCount + 2);
-
                         }}
                         type="button"
                       >

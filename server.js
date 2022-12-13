@@ -1,5 +1,4 @@
-require('dotenv').config();
-const axios = require('axios');
+require('dotenv').config();;
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
