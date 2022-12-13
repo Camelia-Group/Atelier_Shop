@@ -31,6 +31,9 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
                   submitQuestion({
                     body, name: nickname, email, product_id: isOpen[1],
                   });
+                  console.log('PASSED TO SUBMIT QUESTION FN => ', {
+                    body, name: nickname, email, product_id: isOpen[1],
+                  });
                 }}
               >
                 Submit question
@@ -57,7 +60,7 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
               <input type="text" onChange={(e) => { setNickname(e.target.value); }} placeholder="Example: jackson11" maxLength="60" required />
               <p>What is your email?</p>
               <input type="email" onChange={(e) => { setEmail(e.target.value); }} placeholder="description" maxLength="60" required />
-              <button type="button" onClick={() => submitAnswer([q_id, { body, name: nickname, email }])}>Submit answer</button>
+              <button type="button" onClick={() => submitAnswer(isOpen[1], { body, name: nickname, email })}>Submit answer</button>
             </form>
             <button className="close-modal" onClick={close} type="button">
               ❌
