@@ -7,6 +7,7 @@ import { render } from 'react-dom';
 function Question({ question, addAnswer }) {
   const [answerRenderCount, setAnswerRenderCount] = useState(2);
   const [showMore, setShowMore] = useState([]);
+  const [checkForCollapse, setCheckForCollapse] = useState(false);
 
   let answersSorted = [];
 
@@ -117,6 +118,7 @@ function Question({ question, addAnswer }) {
     if (answersSorted.length > 2) {
       setShowMore([true, 'more']);
     }
+    // setCheckForCollapse(true);
   }, []);
 
   return (
@@ -152,78 +154,85 @@ function Question({ question, addAnswer }) {
 
       <div className="question-answer-body">
         {
-          renderedAnswers.map((answer, index) => (
-            <div key={answer.id}>
-              <div>
-                <b>
-                  A:
-                </b>
-                <span className="question-answer-body-text">{answer.body}</span>
-              </div>
+          renderedAnswers.map((answer, index) => {
+            if (index === answersSorted.length - 1 && checkForCollapse ) {
+              setAnswerRenderCount(answerRenderCount + 2);
+              setShowMore([true, 'collapse']);
+              console.log('collapse button should be showing')
+            }
+            console.log(index, answersSorted.length - 1, answerRenderCount)
 
-              <div className="question-answer-footer-container">
-                <span>
-                  by
-                  {answer.answerer_name === 'Seller' ? <b>&nbsp;Seller</b> : ` ${answer.answerer_name}`}
-                  ,&nbsp;
-                  {
-                  parseDate(answer.date)
-                  }
-                  &nbsp;|
-                </span>
-                <span>
-                  &nbsp;Helpful?&nbsp;
-                  <button onClick={() => {handleHelpfulAnswer(answer.id)}} className="question-answer-helpful-btn" type="button">
-                    <u>Yes</u>
-                    (
-                    <span id={`${answer.id}`}>{answer.helpfulness}</span>
-                    )
-                    &nbsp;
-                  </button>
-                </span>
-                <span>
-                  | &nbsp;
-                  <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
-                    <u>Report</u>
-                  </button>
-                </span>
-              </div>
-              <div id={`m${question.question_id}`} className="question-answer-more-container">
+            return (
+              <div key={answer.id}>
+                <div>
+                  <b>
+                    A:
+                  </b>
+                  <span className="question-answer-body-text">{answer.body}</span>
+                </div>
 
-                {
-                  showMore[0] === true && showMore[1] === 'more' && index === answersSorted.length - 1 ? (
-                    <button
-                      onClick={() => {
-                        // (index === answerRenderCount - 1 || index === answerRenderCount - 2) &&
-                        if (index === answerRenderCount - 1 || index === answerRenderCount - 2 ) {
-                          alert('TRUE')
-                          setAnswerRenderCount(answerRenderCount + 2);
-                          setShowMore([true, 'collapse']);
-                        } else {
-                          setAnswerRenderCount(answerRenderCount + 2);
-                        }
-                      }}
-                      type="button"
-                    >
-                      LOAD MORE
+                <div className="question-answer-footer-container">
+                  <span>
+                    by
+                    {answer.answerer_name === 'Seller' ? <b>&nbsp;Seller</b> : ` ${answer.answerer_name}`}
+                    ,&nbsp;
+                    {
+                    parseDate(answer.date)
+                    }
+                    &nbsp;|
+                  </span>
+                  <span>
+                    &nbsp;Helpful?&nbsp;
+                    <button onClick={() => {handleHelpfulAnswer(answer.id)}} className="question-answer-helpful-btn" type="button">
+                      <u>Yes</u>
+                      (
+                      <span id={`${answer.id}`}>{answer.helpfulness}</span>
+                      )
+                      &nbsp;
                     </button>
-                  ) : null
-                }
-                {
-                  showMore[0] === true && showMore[1] === 'collapse' ? (
-                    <button onClick={() => { setShowMore([true, 'more']); setAnswerRenderCount(2); }} type="button">COLLAPSE</button>
-                  ) : null
-                }
+                  </span>
+                  <span>
+                    | &nbsp;
+                    <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
+                      <u>Report</u>
+                    </button>
+                  </span>
+                </div>
+                <div id={`m${question.question_id}`} className="question-answer-more-container">
+                  {
+                    showMore[0] === true && showMore[1] === 'more' && index === renderedAnswers.length - 1 ? (
+                      <button
+                        onClick={() => {
+                          // (index === answerRenderCount - 1 || index === answerRenderCount - 2) &&
 
+                          setAnswerRenderCount(answerRenderCount + 2);
+
+                        }}
+                        type="button"
+                      >
+                        LOAD MORE
+                      </button>
+                    ) : null
+                  }
+
+                  {
+                    showMore[0] === true && showMore[1] === 'collapse' && renderedAnswers.length - 1 ? (
+                      <button onClick={() => { setShowMore([true, 'more']); setAnswerRenderCount(2); }} type="button">COLLAPSE</button>
+                    ) : null
+                  }
+
+                </div>
               </div>
-            </div>
-          ))
+            )
+          })
         }
-
       </div>
     </div>
   );
 }
+
+
+
 export default Question;
 
 Question.propTypes = {
