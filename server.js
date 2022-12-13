@@ -2,9 +2,7 @@ require('dotenv').config();
 const axios = require('axios');
 const express = require('express');
 const path = require('path');
-const axios = require('axios');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -13,8 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 const url = process.env.API_URL;
-const port = process.env.PORT;
-axios.defaults.headers.common.Authorization = process.env.AUTH_KEY;
+const PORT = process.env.PORT;
+axios.defaults.headers.common.Authorization = process.env.API_KEY;
 
 
 //Rating and Reviews
@@ -26,6 +24,7 @@ const getReview = (req, res) => {
       params: { product_id: req.params.product_id },
     }).then((result) => {
     res.status(200).send(result.data.results);
+    console.log('received');
   }).catch((err) => {
     console.log(err);
   });
