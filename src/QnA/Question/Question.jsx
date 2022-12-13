@@ -76,7 +76,7 @@ function Question({ question, addAnswer }) {
         month = 'January';
         break;
       case '02':
-        month = 'Febuary';
+        month = 'February';
         break;
       case '03':
         month = 'March';
@@ -155,7 +155,7 @@ function Question({ question, addAnswer }) {
       <div className="question-answer-body">
         {
           renderedAnswers.map((answer, index) => {
-            if (JSON.stringify(answer) === JSON.stringify(answersSorted[answersSorted.length - 1]) && showMore[0] === true) {
+            if (JSON.stringify(answer) === JSON.stringify(answersSorted[answersSorted.length - 1]) && showMore[0] === true && showMore[1] === 'more') {
               setShowMore([true, 'collapse']);
             }
 
@@ -213,7 +213,7 @@ function Question({ question, addAnswer }) {
                   }
 
                   {
-                    showMore[0] === true && showMore[1] === 'collapse' && renderedAnswers.length - 1 ? (
+                    showMore[0] === true && showMore[1] === 'collapse' && index === renderedAnswers.length - 1 ? (
                       <button onClick={() => { setShowMore([true, 'more']); setAnswerRenderCount(2); }} type="button">COLLAPSE</button>
                     ) : null
                   }
