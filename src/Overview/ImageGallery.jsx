@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-else-return */
 import React, { useState, useEffect } from 'react';
+import ExpandedImage from './ExpandedImage.jsx';
 
 export default function ImageGallery({ selectedImage, setSelectedImage, selectedStyle }) {
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -39,34 +40,18 @@ export default function ImageGallery({ selectedImage, setSelectedImage, selected
     setIsExpanded(!isExpanded);
   };
 
-
+//ensure that image doesnt render until selected style has been mounted
   if (selectedStyle.photos !== undefined) {
+    //check if the image has been expanded
     if (isExpanded) {
-      return (
-        <div className="image-gallery">
-          <div className="selected-image">
-            <input type="button" onClick={() => handlePreviousClick()} value="previous" />
-            <img src={selectedImage} alt="" style={{ 'width': '100%', 'max-height': '100%' }} />
-            <input type="button" onClick={() => handleNextClick()} value="next" />
-            <input type="button" onClick={() => handleExpand()} value="expand" />
-          </div>
-          <div className="image-thumbnail-nav">
-            {selectedStyle.photos.map((image, index) => {
-              if (index === photoIndex) {
-                return (<img
-                  src={image.thumbnail_url}
-                  onClick={()=>handleThumbnailClick(image.url, index)}
-                  className="image-thumbnail-highlighted" />);
-              } else {
-                return (<img
-                  src={image.thumbnail_url}
-                  onClick={()=>handleThumbnailClick(image.url, index)}
-                  className="image-thumbnail" />);
-              }
-              })}
-          </div>
-        </div>
-      );
+      return <ExpandedImage
+                selectedImage={selectedImage}
+                handleThumbnailClick={handleThumbnailClick}
+                selectedStyle={selectedStyle}
+                handleExpand={handleExpand}
+                handleNextClick={handleNextClick}
+                handlePreviousClick={handlePreviousClick}
+                photoIndex={photoIndex} />
     } else {
       return (
         <div className="image-gallery">
