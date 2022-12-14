@@ -54,29 +54,31 @@ export default function ImageGallery({ selectedImage, setSelectedImage, selected
                 photoIndex={photoIndex} />
     } else {
       return (
-        <div className="image-gallery">
-          <div className="selected-image">
-            <input type="button" onClick={() => handlePreviousClick()} value="previous" />
-            <img src={selectedImage} alt="" style={{ 'max-width': '100%', 'max-height': '100%' }} />
-            <input type="button" onClick={() => handleNextClick()} value="next" />
-            <input type="button" onClick={() => handleExpand()} value="expand" />
-          </div>
-          <div className="image-thumbnail-nav">
-            {selectedStyle.photos.map((image, index) => {
-              if (index === photoIndex) {
-                return (<img
-                  src={image.thumbnail_url}
-                  onClick={()=>handleThumbnailClick(image.url, index)}
-                  className="image-thumbnail-highlighted" />);
-              } else {
-                return (<img
-                  src={image.thumbnail_url}
-                  onClick={()=>handleThumbnailClick(image.url, index)}
-                  className="image-thumbnail" />);
-              }
-              })}
-          </div>
-        </div>
+        // <div className="image-gallery">
+          // <div className="selected-image">
+          <>
+            <input type="button" onClick={() => handlePreviousClick()} value="previous" className="back-button" />
+            <img src={selectedImage} alt="" style={{ 'max-width': '95%', 'max-height': '95%' }} />
+            <input type="button" onClick={() => handleNextClick()} value="next" className="next-button"/>
+            <input type="button" onClick={() => handleExpand()} value="expand" className="expand-button"/>
+          </>
+          // </div>
+          // <div className="image-thumbnail-nav">
+          //   {selectedStyle.photos.map((image, index) => {
+          //     if (index === photoIndex) {
+          //       return (<img
+          //         src={image.thumbnail_url}
+          //         onClick={()=>handleThumbnailClick(image.url, index)}
+          //         className="image-thumbnail-highlighted" />);
+          //     } else {
+          //       return (<img
+          //         src={image.thumbnail_url}
+          //         onClick={()=>handleThumbnailClick(image.url, index)}
+          //         className="image-thumbnail" />);
+          //     }
+          //     })}
+          // </div>
+        // </div>
       );
     }
   } else {

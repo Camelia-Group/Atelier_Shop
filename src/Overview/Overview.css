@@ -15,7 +15,10 @@
 }
 
 .image {
-  width:100%;
+  justify-content: center;
+  display: flex;
+  position: relative;
+  width: 100%;
 }
 
 .sidebarDiv {
@@ -87,4 +90,27 @@
   width: 50px;
   border-radius: 10px;
   border-color: red;
+}
+
+select {
+  padding: 10px;
+  margin: 5px;
+}
+
+.back-button {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+}
+
+.next-button {
+  position: absolute;
+  top: 50%;
+  left: 80%;
+}
+
+.expand-button {
+  position: absolute;
+  top: 10%;
+  left: 85%;
 }
