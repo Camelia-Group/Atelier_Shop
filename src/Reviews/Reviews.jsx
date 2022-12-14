@@ -2,7 +2,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Rating from './RatingBreakdown/Rating.jsx';
-// import Tiles from './ReviewList/Tiles.jsx';
 import ReviewList from './ReviewList/ReviewList.jsx';
 import Factors from './Factors/Factors.jsx';
 // import './Reviews.css';
@@ -53,7 +52,6 @@ export default function Reviews({productID}) {
 
         </div>
 
-       {/* <Tiles reviews={productReviews}/> */}
       <ReviewList reviews={productReviews}/>
 
       </section>
