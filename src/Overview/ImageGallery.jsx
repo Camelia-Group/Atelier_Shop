@@ -58,13 +58,18 @@ export default function ImageGallery({ selectedImage, setSelectedImage, selected
           // <div className="selected-image">
           <>
             <>
-              <input type="button" onClick={() => handlePreviousClick()} value="previous" className="back-button" />
+              <button onClick={() => handlePreviousClick()} value="previous" className="back-button">
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
               <img src={selectedImage} alt="" style={{ 'max-width': '95%', 'max-height': '95%' }} />
-              <input type="button" onClick={() => handleNextClick()} value="next" className="next-button"/>
+              <button onClick={() => handleNextClick()} className="next-button">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
               <input type="button" onClick={() => handleExpand()} value="expand" className="expand-button"/>
             </>
             <>
               <div className="image-thumbnail-nav">
+
                 {selectedStyle.photos.map((image, index) => {
                   if (index === photoIndex) {
                     return (<img
