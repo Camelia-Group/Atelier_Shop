@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './Question.css';
+import axios from 'axios';
 
 function Question({ question, addAnswer }) {
   const [answerRenderCount, setAnswerRenderCount] = useState(2);
+  const [showMore, setShowMore] = useState([]);
+
   let answersSorted = [];
+
   const answerKeys = Object.keys(question.answers);
+
   const checkSort = (currAnswers) => {
     if (currAnswers.length === 1) {
       return true;
@@ -20,6 +25,24 @@ function Question({ question, addAnswer }) {
   for (let i = 0; i < answerKeys.length; i += 1) {
     answersSorted.push(question.answers[answerKeys[i]]);
   }
+
+  const handleHelpfulAnswer = (id) => {
+    axios.post(`http://localhost:3000/answers/${id}/helpful`)
+      .then(() => {
+        // eslint-disable-next-line max-len
+        document.getElementById(id).innerHTML = parseInt(document.getElementById(id).innerHTML, 10) + 1;
+        alert('helpful success')
+      })
+      .catch((err) => { console.error(err); });
+  };
+  const handleHelpfulQuestion = () => {
+    axios.post(`http://localhost:3000/question/${question.question_id}/helpful`)
+      .then(() => {
+        // eslint-disable-next-line max-len
+        document.getElementById(question.question_id).innerHTML = parseInt(document.getElementById(question.question_id).innerHTML, 10) + 1;
+      })
+      .catch((err) => { console.error(err); });
+  };
 
   const sortAnswers = (currAnswers) => {
     const returned = currAnswers;
@@ -89,8 +112,14 @@ function Question({ question, addAnswer }) {
     return `${month} ${day}, ${year}`;
   };
 
+  useEffect(() => {
+    if (answerKeys.length > 2) {
+      setShowMore([true, 'more']);
+    }
+  }, []);
+
   return (
-    <div className="question">
+    <div id={`q${question.question_id}`} className="question">
       <div className="question-body-container">
         <div className="question-body">
           <b>
@@ -103,9 +132,11 @@ function Question({ question, addAnswer }) {
         <div className="question-helpful-container">
           <span>
             Helpful?&nbsp;
-            <button onClick={() => {}} className="question-helpful-btn" type="button">
+            <button onClick={() => {handleHelpfulQuestion()}} className="question-helpful-btn" type="button">
               <u>Yes</u>
-              {`(${question.question_helpfulness})`}
+              (
+              <span id={question.question_id}>{question.question_helpfulness}</span>
+              )
             </button>
           </span>
           <span>
@@ -141,9 +172,11 @@ function Question({ question, addAnswer }) {
                 </span>
                 <span>
                   &nbsp;Helpful?&nbsp;
-                  <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
+                  <button onClick={() => {handleHelpfulAnswer(answer.id)}} className="question-answer-helpful-btn" type="button">
                     <u>Yes</u>
-                    {`(${answer.helpfulness})`}
+                    (
+                    <span id={`${answer.id}`}>{answer.helpfulness}</span>
+                    )
                     &nbsp;
                   </button>
                 </span>
@@ -154,11 +187,30 @@ function Question({ question, addAnswer }) {
                   </button>
                 </span>
               </div>
-              <div className="question-answer-more-container">
-                {
-                  answerKeys.length > 2 ? <button type="button" className="question-answer-more">LOAD MORE ANSWERS</button> : null
-                }
+              <div id={`m${question.question_id}`} className="question-answer-more-container">
 
+                {
+                  showMore[0] && showMore[1] === 'more' ? (
+                    <button
+                      onClick={() => {
+                        if (answerRenderCount >= Object.keys(question.answers)) {
+                          setAnswerRenderCount(answerRenderCount + 2);
+                          setShowMore([true, 'collapse']);
+                        } else {
+                          setAnswerRenderCount(answerRenderCount + 2);
+                        }
+                      }}
+                      type="button"
+                    >
+                      LOAD MORE
+                    </button>
+                  ) : null
+                }
+                {
+                  showMore[0] && showMore[1] === 'collapse' ? (
+                    <button onClick={() => { setShowMore([true, 'more']); setAnswerRenderCount(2); }} type="button">COLLAPSE</button>
+                  ) : null
+                }
               </div>
             </div>
           ))

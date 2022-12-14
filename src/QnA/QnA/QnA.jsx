@@ -45,15 +45,15 @@ export default function QnA({ productId = 37311 }) {
   const addAnswer = (questionId) => {
     setAnswerModalIsOpen([true, questionId, productId]);
   };
-  const submitAnswer = (info) => {
-    axios.post('http://localhost:3000/question/answer', info)
+  const submitAnswer = (id, info) => {
+    axios.post(`http://localhost:3000/question/${id}`, info)
       .then(() => {
         setAnswerModalIsOpen([false]);
       })
       .catch((err) => { console.error(err); });
   };
   const submitQuestion = (info) => {
-    axios.post('http://localhost:3000/question', info)
+    axios.post('http://localhost:3000/questions', info)
       .then(() => {
         setQuestionModalIsOpen([false]);
       })

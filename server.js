@@ -65,9 +65,11 @@ app.get('/questions', (req, res) => {
 });
 
 app.post('/questions', (req, res) => {
-  // axios.post(`${process.env.API_URL}/qa/questions`, req.body)
-  //   .then((data) => { res.send(data); })
-  //   .catch((err) => { res.send(err).status(401); });
+  axios.post(`${process.env.API_URL}/qa/questions`, req.body, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => { res.send(data); })
+    .catch((err) => { res.send(err).status(401); });
 });
 
 app.get('/products/:id', (req, res) => {
@@ -78,10 +80,33 @@ app.get('/products/:id', (req, res) => {
       res.send(data.data.name);
     })
     .catch((err) => {
-      res.send(404);
+      res.send(err);
     });
 });
 
+// body, name, email
+app.post('/question/:id', (req, res) => {
+  axios.post(`${process.env.API_URL}/qa/questions/${req.params.id}/answers`, req.body, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => { res.send(data); })
+    .catch((err) => { res.send(err); });
+});
+app.post('/question/:id/helpful', (req, res) => {
+  axios.post(`${process.env.API_URL}/qa/questions/${req.params.id}/helpful`, req.body, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => { res.send(data); })
+    .catch((err) => { res.send(err); });
+});
+
+app.post('/answers/:id/helpful', (req, res) => {
+  axios.post(`${process.env.API_URL}/qa/answers/${req.params.id}/helpful`, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => { res.send(data); })
+    .catch((err) => { res.send(err); });
+});
 app.listen(PORT, (err) => {
   if (err) {
     return console.error(err);
