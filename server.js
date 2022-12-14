@@ -1,8 +1,8 @@
-require('dotenv').config();
-const axios = require('axios');
+require('dotenv').config();;
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const axios = require('axios');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -12,7 +12,7 @@ app.use(express.json());
 
 const url = process.env.API_URL;
 const PORT = process.env.PORT;
-axios.defaults.headers.common.Authorization = process.env.AUTH_KEY;
+axios.defaults.headers.common.Authorization = process.env.API_KEY;
 
 
 //Rating and Reviews
@@ -26,6 +26,7 @@ const getReview = (req, res) => {
     res.status(200).send(result.data.results);
   }).catch((err) => {
     console.log(err);
+    console.log(req.params.product_id)
   });
 };
 
@@ -37,7 +38,7 @@ const getMetaData = (req, res) => {
     }).then((result) => {
     res.status(200).send(result.data);
   }).catch((err) => {
-    console.log(err);
+    // console.log(err);
   });
 };
 
@@ -64,9 +65,11 @@ app.get('/questions', (req, res) => {
 });
 
 app.post('/questions', (req, res) => {
-  // axios.post(`${process.env.API_URL}/qa/questions`, req.body)
-  //   .then((data) => { res.send(data); })
-  //   .catch((err) => { res.send(err).status(401); });
+  axios.post(`${process.env.API_URL}/qa/questions`, req.body, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => { res.send(data); })
+    .catch((err) => { res.send(err).status(401); });
 });
 
 app.get('/products/:id', (req, res) => {
@@ -77,10 +80,48 @@ app.get('/products/:id', (req, res) => {
       res.send(data.data.name);
     })
     .catch((err) => {
-      res.send(404);
+      res.send(err);
     });
 });
 
+// body, name, email
+app.post('/question/:id', (req, res) => {
+  axios.post(`${process.env.API_URL}/qa/questions/${req.params.id}/answers`, req.body, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => { res.send(data); })
+    .catch((err) => { res.send(err); });
+});
+app.post('/question/:id/helpful', (req, res) => {
+  axios.put(`${process.env.API_URL}/qa/questions/${req.params.id}/helpful`, req.body, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => { console.log(data); res.send(200); })
+    .catch((err) => { res.send(err); });
+});
+
+app.post('/answers/:id/helpful', (req, res) => {
+  console.log('Serving helpful answer request')
+  axios.put(`${process.env.API_URL}/qa/answers/${req.params.id}/helpful`, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => { res.send(200); console.log(data); })
+    .catch((err) => { res.send(err); console.log(err)});
+});
+app.post('/answers/:id/report', (req, res) => {
+  axios.put(`${process.env.API_URL}/qa/answers/${req.params.id}/report`, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => res.send(200))
+    .catch((err) => res.send(err));
+})
+app.post('/question/:id/report', (req, res) => {
+  axios.put(`${process.env.API_URL}/qa/questions/${req.params.id}/report`, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => res.send(200))
+    .catch((err) => res.send(err));
+})
 app.listen(PORT, (err) => {
   if (err) {
     return console.error(err);
