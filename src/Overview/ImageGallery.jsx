@@ -57,7 +57,7 @@ export default function ImageGallery({ selectedImage, setSelectedImage, selected
         // <div className="image-gallery">
           // <div className="selected-image">
           <>
-            <>
+            <div className="image">
               <button onClick={() => handlePreviousClick()} value="previous" className="back-button">
                 <i class="fa-solid fa-arrow-left"></i>
               </button>
@@ -65,9 +65,9 @@ export default function ImageGallery({ selectedImage, setSelectedImage, selected
               <button onClick={() => handleNextClick()} className="next-button">
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
-              <input type="button" onClick={() => handleExpand()} value="expand" className="expand-button"/>
-            </>
-            <>
+              <button onClick={() => handleExpand()} className="expand-button">
+                <i class="fa-solid fa-expand"></i>
+              </button>
               <div className="image-thumbnail-nav">
 
                 {selectedStyle.photos.map((image, index) => {
@@ -84,6 +84,8 @@ export default function ImageGallery({ selectedImage, setSelectedImage, selected
                   }
                   })}
               </div>
+            </div>
+            <>
             </>
           </>
         // </div>

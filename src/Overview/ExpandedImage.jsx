@@ -3,12 +3,18 @@ import React from 'react';
 export default function ExpandedImage({selectedImage, handleThumbnailClick, selectedStyle, handleExpand, handleNextClick, handlePreviousClick, photoIndex}) {
   return (
     <div className="expanded-image-gallery">
-      <div className="expanded-selected-image">
-        <input type="button" onClick={() => handlePreviousClick()} value="previous" />
-        <img src={selectedImage} alt="" style={{ 'width': '100%', 'max-height': '100%' }} />
-        <input type="button" onClick={() => handleNextClick()} value="next" />
-        <input type="button" onClick={() => handleExpand()} value="expand" />
-      </div>
+      <>
+              <button onClick={() => handlePreviousClick()} value="previous" className="back-button">
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
+              <img src={selectedImage} alt="" className="expanded-image"/>
+              <button onClick={() => handleNextClick()} className="next-button">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button onClick={() => handleExpand()} className="expand-button">
+                <i class="fa-solid fa-expand"></i>
+              </button>
+      </>
       <div className="image-thumbnail-nav">
         {selectedStyle.photos.map((image, index) => {
           if (index === photoIndex) {

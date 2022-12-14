@@ -42,13 +42,13 @@ export default function Overview() {
     // </div>
     <div id="wrapper">
       <div className="overviewContainer">
-        <div className="image">
+        <>
           <ImageGallery
             selectedImage={selectedImage}
             setSelectedImage={setSelectedImage}
             selectedStyle={selectedStyle}
           />
-        </div>
+        </>
         <div className="sidebarDiv">
           <div className="productDetails"><Details product={product} selectedStyle={selectedStyle} /></div>
           <div className="styleSelector">
