@@ -1,22 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import './QuestionSearch.css';
 import icon from './../Images/search.png'
 
 function QuestionSearch({ setRenderSearch, setSearchResults, questions }) {
   const [searchTerm, setSearchTerm] = useState('');
-
   function handleOnChange(e) {
-    setSearchTerm(e.target.value);
+    if (e.target.value.length >= 3) {
+      setSearchTerm(e.target.value);
+    } else {
+      setRenderSearch(false);
+    }
   }
-  function handleOnClick() {
-    setRenderSearch(true);
-    setSearchResults(questions.filter((question) => question.question_body.includes(searchTerm)));
+  function checkAnswers(answers) {
+    var vals = Object.keys(answers);
+    for (var i = 0; i < vals.length; i += 1) {
+      if (answers[vals[i]].body.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return true;
+      }
+    }
+    return false;
   }
+  useEffect(() => {
+    if (searchTerm.length >= 3) {
+      var results = questions.filter(question => question.question_body.toLowerCase().includes(searchTerm.toLowerCase()) || checkAnswers(question.answers));
+      setRenderSearch(true);
+      setSearchResults(results)
+    }
+  }, [searchTerm])
   return (
     <div className="search-container">
       <input type="text" onChange={handleOnChange} placeholder="Have a question? Search for answers…" />
-      <button type="button" onClick={handleOnClick}>
+      <button type="button">
         <img src={icon} className="search-icon" alt="Search Icon" />
       </button>
     </div>
