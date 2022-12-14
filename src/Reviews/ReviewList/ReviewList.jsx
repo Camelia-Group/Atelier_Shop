@@ -59,11 +59,7 @@ function ReviewList({ reviews }) {
       }
       <div className="review-list-buttons">
         <button type="button">MORE REVIEWS </button>
-        <button type="button" onClick={() => { addReview(); }}>
-          ADD A REVIEW
-          &nbsp;&nbsp;
-          <span style={{ fontSize: '15px', marginTop: '3px' }}>+</span>
-        </button>
+        <Modal />
       </div>
     </div>
   );

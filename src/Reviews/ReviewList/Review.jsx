@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Tile.css';
+import Sorting from './Sorting.jsx'
 
 function Review({ review, addReview }) {
 
@@ -103,6 +104,7 @@ function Review({ review, addReview }) {
 
   return (
     <div className="review">
+      <Sorting />
       <div className="review-body-container">
       <h1>Reviews: </h1>
         <div className="review-body">
