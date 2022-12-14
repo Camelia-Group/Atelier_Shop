@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './Question.css';
+import axios from 'axios';
 
 function Question({ question, addAnswer }) {
   const [answerRenderCount, setAnswerRenderCount] = useState(2);
+  const [showMore, setShowMore] = useState([]);
+
   let answersSorted = [];
+
   const answerKeys = Object.keys(question.answers);
+
   const checkSort = (currAnswers) => {
     if (currAnswers.length === 1) {
       return true;
@@ -19,6 +24,40 @@ function Question({ question, addAnswer }) {
   };
   for (let i = 0; i < answerKeys.length; i += 1) {
     answersSorted.push(question.answers[answerKeys[i]]);
+  }
+
+  const handleHelpfulAnswer = (id) => {
+    axios.post(`http://localhost:3000/answers/${id}/helpful`)
+      .then(() => {
+        // eslint-disable-next-line max-len
+        document.getElementById(id).innerHTML = parseInt(document.getElementById(id).innerHTML, 10) + 1;
+        alert('helpful success')
+      })
+      .catch((err) => { console.error(err); });
+  };
+  const handleHelpfulQuestion = () => {
+    axios.post(`http://localhost:3000/question/${question.question_id}/helpful`)
+      .then(() => {
+        // eslint-disable-next-line max-len
+        document.getElementById(question.question_id).innerHTML = parseInt(document.getElementById(question.question_id).innerHTML, 10) + 1;
+      })
+      .catch((err) => { console.error(err); });
+  };
+  const handleReportQuestion = () => {
+    axios.post(`http://localhost:3000/question/${question.question_id}/report`)
+      .then(() => {
+        // eslint-disable-next-line max-len
+        console.log('reported');
+      })
+      .catch((err) => { console.error(err); });
+  }
+  const handleReportAnswer = (id) => {
+    axios.post(`http://localhost:3000/answers/${id}/report`)
+    .then(() => {
+      // eslint-disable-next-line max-len
+      console.log('reported');
+    })
+    .catch((err) => { console.error(err); });
   }
 
   const sortAnswers = (currAnswers) => {
@@ -51,7 +90,7 @@ function Question({ question, addAnswer }) {
         month = 'January';
         break;
       case '02':
-        month = 'Febuary';
+        month = 'February';
         break;
       case '03':
         month = 'March';
@@ -89,8 +128,16 @@ function Question({ question, addAnswer }) {
     return `${month} ${day}, ${year}`;
   };
 
+  useEffect(() => {
+    if (answersSorted.length > 2) {
+      setShowMore([true, 'more']);
+    }
+    // setCheckForCollapse(true);
+  }, []);
+
+
   return (
-    <div className="question">
+    <div id={`q${question.question_id}`} className="question">
       <div className="question-body-container">
         <div className="question-body">
           <b>
@@ -103,71 +150,105 @@ function Question({ question, addAnswer }) {
         <div className="question-helpful-container">
           <span>
             Helpful?&nbsp;
-            <button onClick={() => {}} className="question-helpful-btn" type="button">
+            <button onClick={() => {handleHelpfulQuestion()}} className="question-helpful-btn" type="button">
               <u>Yes</u>
-              {`(${question.question_helpfulness})`}
+              (
+              <span id={question.question_id}>{question.question_helpfulness}</span>
+              )
             </button>
           </span>
           <span>
             &nbsp;|&nbsp;
-            <button onClick={() => { addAnswer(question.question_id); }} className="question-helpful-btn" type="button">
+            <button onClick={() => { addAnswer(question.question_id, question.question_body); }} className="question-helpful-btn" type="button">
               <u>Add Answer</u>
             </button>
           </span>
-
+          <span>
+            &nbsp;|&nbsp;
+            <button onClick={() => {handleReportQuestion()}} className="question-helpful-btn" type="button">
+              <u>Report</u>
+            </button>
+          </span>
         </div>
       </div>
 
       <div className="question-answer-body">
         {
-          renderedAnswers.map((answer) => (
-            <div key={answer.id}>
-              <div>
-                <b>
-                  A:
-                </b>
-                <span className="question-answer-body-text">{answer.body}</span>
-              </div>
+          renderedAnswers.map((answer, index) => {
+            if (JSON.stringify(answer) === JSON.stringify(answersSorted[answersSorted.length - 1]) && showMore[0] === true && showMore[1] === 'more') {
+              setShowMore([true, 'collapse']);
+            }
+            return (
+              <div key={answer.id}>
+                <div>
+                  <b>
+                    A:
+                  </b>
+                  <span className="question-answer-body-text">{answer.body}</span>
+                </div>
 
-              <div className="question-answer-footer-container">
-                <span>
-                  by
-                  {answer.answerer_name === 'Seller' ? <b>&nbsp;Seller</b> : ` ${answer.answerer_name}`}
-                  ,&nbsp;
+                <div className="question-answer-footer-container">
+                  <span>
+                    by
+                    {answer.answerer_name === 'Seller' ? <b>&nbsp;Seller</b> : ` ${answer.answerer_name}`}
+                    ,&nbsp;
+                    {
+                    parseDate(answer.date)
+                    }
+                    &nbsp;|
+                  </span>
+                  <span>
+                    &nbsp;Helpful?&nbsp;
+                    <button onClick={() => {handleHelpfulAnswer(answer.id)}} className="question-answer-helpful-btn" type="button">
+                      <u>Yes</u>
+                      (
+                      <span id={`${answer.id}`}>{answer.helpfulness}</span>
+                      )
+                      &nbsp;
+                    </button>
+                  </span>
+                  <span>
+                    | &nbsp;
+                    <button onClick={() => {handleReportAnswer(answer.id)}} className="question-answer-helpful-btn" type="button">
+                      <u>Report</u>
+                    </button>
+                  </span>
+                </div>
+                <div id={`m${question.question_id}`} className="question-answer-more-container">
                   {
-                  parseDate(answer.date)
+                    showMore[0] === true && showMore[1] === 'more' && index === renderedAnswers.length - 1 ? (
+                      <button
+                        className="question-answer-more"
+                        onClick={() => {
+                          // (index === answerRenderCount - 1 || index === answerRenderCount - 2) &&
+                          setAnswerRenderCount(answerRenderCount + 2);
+                        }}
+                        type="button"
+                        style={{marginLeft: '27px'}}
+                      >
+                        LOAD MORE
+                      </button>
+                    ) : null
                   }
-                  &nbsp;|
-                </span>
-                <span>
-                  &nbsp;Helpful?&nbsp;
-                  <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
-                    <u>Yes</u>
-                    {`(${answer.helpfulness})`}
-                    &nbsp;
-                  </button>
-                </span>
-                <span>
-                  | &nbsp;
-                  <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
-                    <u>Report</u>
-                  </button>
-                </span>
-              </div>
-              <div className="question-answer-more-container">
-                {
-                  answerKeys.length > 2 ? <button type="button" className="question-answer-more">LOAD MORE ANSWERS</button> : null
-                }
 
+                  {
+                    showMore[0] === true && showMore[1] === 'collapse' && index === renderedAnswers.length - 1 ? (
+                      <button style={{marginLeft: '27px'}} className="question-answer-more" onClick={() => { setShowMore([true, 'more']); setAnswerRenderCount(2); }} type="button">COLLAPSE</button>
+                    ) : null
+                  }
+
+                </div>
               </div>
-            </div>
-          ))
+            )
+          })
         }
-
       </div>
     </div>
   );
 }
+
+
+
 export default Question;
 
 Question.propTypes = {
