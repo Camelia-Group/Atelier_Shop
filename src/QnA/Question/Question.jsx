@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './Question.css';
 import axios from 'axios';
-import { render } from 'react-dom';
 
 function Question({ question, addAnswer }) {
   const [answerRenderCount, setAnswerRenderCount] = useState(2);
   const [showMore, setShowMore] = useState([]);
-  const [checkForCollapse, setCheckForCollapse] = useState(false);
 
   let answersSorted = [];
 
@@ -45,6 +43,22 @@ function Question({ question, addAnswer }) {
       })
       .catch((err) => { console.error(err); });
   };
+  const handleReportQuestion = () => {
+    axios.post(`http://localhost:3000/question/${question.question_id}/report`)
+      .then(() => {
+        // eslint-disable-next-line max-len
+        console.log('reported');
+      })
+      .catch((err) => { console.error(err); });
+  }
+  const handleReportAnswer = (id) => {
+    axios.post(`http://localhost:3000/answers/${id}/report`)
+    .then(() => {
+      // eslint-disable-next-line max-len
+      console.log('reported');
+    })
+    .catch((err) => { console.error(err); });
+  }
 
   const sortAnswers = (currAnswers) => {
     const returned = currAnswers;
@@ -121,6 +135,7 @@ function Question({ question, addAnswer }) {
     // setCheckForCollapse(true);
   }, []);
 
+
   return (
     <div id={`q${question.question_id}`} className="question">
       <div className="question-body-container">
@@ -144,11 +159,16 @@ function Question({ question, addAnswer }) {
           </span>
           <span>
             &nbsp;|&nbsp;
-            <button onClick={() => { addAnswer(question.question_id); }} className="question-helpful-btn" type="button">
+            <button onClick={() => { addAnswer(question.question_id, question.question_body); }} className="question-helpful-btn" type="button">
               <u>Add Answer</u>
             </button>
           </span>
-
+          <span>
+            &nbsp;|&nbsp;
+            <button onClick={() => {handleReportQuestion()}} className="question-helpful-btn" type="button">
+              <u>Report</u>
+            </button>
+          </span>
         </div>
       </div>
 
@@ -158,9 +178,6 @@ function Question({ question, addAnswer }) {
             if (JSON.stringify(answer) === JSON.stringify(answersSorted[answersSorted.length - 1]) && showMore[0] === true && showMore[1] === 'more') {
               setShowMore([true, 'collapse']);
             }
-
-            console.log(index, answersSorted.length - 1, answerRenderCount)
-
             return (
               <div key={answer.id}>
                 <div>
@@ -192,7 +209,7 @@ function Question({ question, addAnswer }) {
                   </span>
                   <span>
                     | &nbsp;
-                    <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
+                    <button onClick={() => {handleReportAnswer(answer.id)}} className="question-answer-helpful-btn" type="button">
                       <u>Report</u>
                     </button>
                   </span>
@@ -201,11 +218,13 @@ function Question({ question, addAnswer }) {
                   {
                     showMore[0] === true && showMore[1] === 'more' && index === renderedAnswers.length - 1 ? (
                       <button
+                        className="question-answer-more"
                         onClick={() => {
                           // (index === answerRenderCount - 1 || index === answerRenderCount - 2) &&
                           setAnswerRenderCount(answerRenderCount + 2);
                         }}
                         type="button"
+                        style={{marginLeft: '27px'}}
                       >
                         LOAD MORE
                       </button>
@@ -214,7 +233,7 @@ function Question({ question, addAnswer }) {
 
                   {
                     showMore[0] === true && showMore[1] === 'collapse' && index === renderedAnswers.length - 1 ? (
-                      <button onClick={() => { setShowMore([true, 'more']); setAnswerRenderCount(2); }} type="button">COLLAPSE</button>
+                      <button style={{marginLeft: '27px'}} className="question-answer-more" onClick={() => { setShowMore([true, 'more']); setAnswerRenderCount(2); }} type="button">COLLAPSE</button>
                     ) : null
                   }
 

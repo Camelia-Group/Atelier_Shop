@@ -52,7 +52,9 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
           <div onClick={() => { close(); }} role="presentation" className="overlay" />
           <div className="modal-content">
             <h2>Submit your Answer</h2>
-            <h5>&apos;PRODUCT&apos; : &apos;QESTION&apos;</h5>
+            {product} : {isOpen[3]}
+            <br />
+
             <form>
               <p>What is your answer?</p>
               <textarea onChange={(e) => { setBody(e.target.value); }} maxLength="1000" required />
