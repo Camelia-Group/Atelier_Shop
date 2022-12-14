@@ -4,6 +4,10 @@ import Sorting from './Sorting.jsx'
 
 function Review({ review, addReview }) {
 
+  const handleHelpful = () => {
+    review.helpfulness++
+  }
+
   const response = () => {
     if(review.response) {
       return `Response: ${review.response}`
@@ -126,7 +130,7 @@ function Review({ review, addReview }) {
         <div className="review-helpful-container">
           <span>
             Helpful?&nbsp;
-            <button onClick={() => {}} className="review-helpful-btn" type="button">
+            <button onClick={review.helpfulness + 1} className="review-helpful-btn" type="button">
               <u>Yes</u>
               {`(${review.helpfulness})`}
             </button>

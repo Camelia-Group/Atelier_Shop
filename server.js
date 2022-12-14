@@ -1,8 +1,9 @@
 require('dotenv').config();;
 const express = require('express');
+const axios = require('axios');
 const path = require('path');
 const cors = require('cors');
-const axios = require('axios');
+
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -26,7 +27,6 @@ const getReview = (req, res) => {
     res.status(200).send(result.data.results);
   }).catch((err) => {
     console.log(err);
-    console.log(req.params.product_id)
   });
 };
 
@@ -38,7 +38,7 @@ const getMetaData = (req, res) => {
     }).then((result) => {
     res.status(200).send(result.data);
   }).catch((err) => {
-    // console.log(err);
+    console.log(err);
   });
 };
 

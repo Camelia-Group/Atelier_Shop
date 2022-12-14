@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Review from './Review.jsx'
+import Modal from '../newReview/Modal.jsx'
 
 function ReviewList({ reviews }) {
   const [reviewRenderCount, setReviewRenderCount] = useState(2);
@@ -91,11 +92,7 @@ function ReviewList({ reviews }) {
             }}>COLLAPSE</button>
            ) : null
         }
-        <button type="button" onClick={() => { addReview(); }}>
-          ADD A REVIEW
-          &nbsp;&nbsp;
-          <span style={{ fontSize: '15px', marginTop: '3px' }}>+</span>
-        </button>
+       <Modal />
       </div>
     </div>
   );
