@@ -1,9 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
-const e = require('express');
 const express = require('express');
 const path = require('path');
-const axios = require('axios');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -14,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 const url = process.env.API_URL;
-const port = process.env.PORT;
+const PORT = process.env.PORT;
 axios.defaults.headers.common.Authorization = process.env.AUTH_KEY;
 
 

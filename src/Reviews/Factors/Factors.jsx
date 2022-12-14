@@ -1,36 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Factors.css';
-export default function Factors({meta}) {
 
-  // const chart = {
-  //   Size: { first: 'Too Small', third: 'Perfect', fifth: 'Too Wide' },
-  //   Width: { first: 'Too Narrow', third: 'Perfect', fifth: 'Too Wide' },
-  //   Comfort: { first: 'Uncomfortable', third: 'Ok', fifth: 'Perfect' },
-  //   Quality: { first: 'Poor', third: 'What I Expected', fifth: 'Perfect' },
-  //   Length: { first: 'Runs Short', third: 'Perfect', fifth: 'Runs Long' },
-  //   Fit: { first: 'Runs Tight', third: 'Perfect', fifth: 'Runs Long' }
-  // };
+export default function Factors({metaData}) {
 
-  return(
-    <>
 
- <h1>Factors</h1>
- <p>size</p>
- {/* <h5>{meta}</h5> */}
- <p>width</p>
- <p>comfort</p>
-<p>length</p>
-    </>
-  )
-};
+  const [characteristicsMeaning] = useState(() => ({
+    Size: ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too big'],
+    Width: ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too big'],
+    Comfort: ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too big'],
+    Quality: ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too big'],
+    Length: ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too big'],
+    Fit: ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too big'],
+  }));
 
-{/* <h5>Characteristics:</h5>
-      {Object.entries(chart.Characteristics).map((char, i) => (
-        <div key={i}>
+  function calcPercent(val) {
+    return Math.floor(parseFloat(val) * 20);
+  }
 
-          <div >
-              <option value="1"></option>
-              <option value="5"></option>
+  return (
+
+    <div className="ratings-product-breakdown">
+      {metaData && Object.keys(metaData.characteristics).map((characteristic, i) => (
+        <div key={i} id={`${characteristic}-breakdown`}>
+          <div>{characteristic}</div>
+          <div className="factor-bar">
+            <div className="down-arrow-bar"> ▼ </div>
+          </div>
+          <div className="first-and-last-char">
+            <div className="first-char">{characteristicsMeaning[characteristic][0]}</div>
+            <div className="last-char">{characteristicsMeaning[characteristic][4]}</div>
           </div>
         </div>
-      ))} */}
+      ))}
+    </div>
+  );
+
+
+};
