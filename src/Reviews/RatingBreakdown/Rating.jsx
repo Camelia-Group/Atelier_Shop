@@ -52,15 +52,16 @@ const oneStar = (totalRating()[1] * 100 )  / productReviews.length;
     <>
   <div className="ratingContainer">
     <h3>Ratings & Reviews</h3>
-    <h5>{avgRating()} {stars(avgRating())}</h5>
+    <h2>{avgRating()} {stars(avgRating())}</h2>
 <h5>100% of reviews recommend this product</h5>
  {/* <div>5stars: <h5 className="bar"><span className="filled-bar" style={{width: `${fiveStar}`}}></span></h5></div>
  <div>4stars: <h5 className="bar"><span className="filled-bar" style={{width: `${fourStar}`}}></span></h5></div> */}
-  <div>5stars: <span className="bar">{totalRating()[5]}</span> </div>
-  <div>4stars: <span className="bar">{totalRating()[4]}</span> </div>
-  <div>3stars: <span className="bar">{totalRating()[3]}</span> </div>
-  <div>2stars: <span className="bar">{totalRating()[2]}</span> </div>
-  <div>1stars: <span className="bar">{totalRating()[1]}</span> </div>
+  <div>5stars: <div className="bar"><span className="filling-bar">{totalRating()[5]}</span></div> </div>
+  <div>4stars: <div className="bar"><span className="filling-bar">{totalRating()[4]}</span></div> </div>
+  <div>3stars: <div className="bar"><span className="filling-bar">{totalRating()[3]}</span></div> </div>
+  <div>2stars: <div className="bar"><span className="filling-bar">{totalRating()[2]}</span></div> </div>
+  <div>1stars: <div className="bar"><span className="filling-bar">{totalRating()[1]}</span></div> </div>
+
 
 
 
