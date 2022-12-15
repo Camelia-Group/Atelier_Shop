@@ -11,7 +11,7 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
       {
         isOpen[0] === true && typeOfModal === 'question' ? (
           <div className="modal">
-            <div onClick={() => { close(); }} role="presentation" className="overlay" />
+            <div onClick={() => { close(); }} role="presentation" className="overlay" id="overlay" />
             <div className="modal-content">
               <h2>Ask Your Question</h2>
               <h5>
