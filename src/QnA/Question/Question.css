@@ -57,8 +57,11 @@
 }
 
 .question {
-  margin-bottom: 14px;
-  margin-top: 14px;
+  margin-bottom: 18px;
+  margin-top: 10px;
+  border-bottom: 1px solid black;
+  padding-bottom: 6px;
+
 }
 .question-answer-body {
   max-height: 50vh;
