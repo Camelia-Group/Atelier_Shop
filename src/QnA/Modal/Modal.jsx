@@ -25,6 +25,7 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
                 <input type="text" onChange={(e) => { setNickname(e.target.value); }} placeholder="Example: jackson11" maxLength="60" required />
                 <p>Your email</p>
                 <input type="email" onChange={(e) => { setEmail(e.target.value); }} maxLength="60" required />
+                <br />
                 <button
                   type="button"
                   onClick={() => {
@@ -49,7 +50,7 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
       {
       isOpen[0] === true && typeOfModal === 'answer' ? (
         <div className="modal">
-          <div onClick={() => { close(); }} role="presentation" className="overlay" />
+          <div id="overlay" onClick={() => { close(); }} role="presentation" className="overlay" />
           <div className="modal-content">
             <h2>Submit your Answer</h2>
             {product} : {isOpen[3]}
@@ -62,6 +63,7 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
               <input type="text" onChange={(e) => { setNickname(e.target.value); }} placeholder="Example: jackson11" maxLength="60" required />
               <p>What is your email?</p>
               <input type="email" onChange={(e) => { setEmail(e.target.value); }} placeholder="description" maxLength="60" required />
+              <br />
               <button type="button" onClick={() => submitAnswer(isOpen[1], { body, name: nickname, email })}>Submit answer</button>
             </form>
             <button className="close-modal" onClick={close} type="button">

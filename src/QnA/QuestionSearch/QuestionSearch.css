@@ -7,11 +7,12 @@
   height: 45px;
   border: 1px solid black;
   padding-left: 15px;
+  background: transparent;
 }
 
 .search-container input::placeholder{
   text-transform: uppercase;
-  color: black;
+  color: rgb(69, 69, 69);
   font-weight: bold;
 }
 
