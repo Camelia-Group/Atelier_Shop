@@ -11,10 +11,7 @@ const root = createRoot(document.getElementById('root'));
 
 
 function App() {
-
   const [productID, setProductID] = useState(37311);
-
-
   return (
     <div>
       <div><Overview /></div>

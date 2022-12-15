@@ -34,16 +34,11 @@ export default function QnA({ productId = 37311 }) {
         console.error(err, 'ERR PROD NAME');
       });
   }, []);
-  // const handleClose = (inputs) => {
-  //   if (input) {
-
-  //   }
-  // };
   const addQuestion = () => {
     setQuestionModalIsOpen([true, productId]);
   };
-  const addAnswer = (questionId) => {
-    setAnswerModalIsOpen([true, questionId, productId]);
+  const addAnswer = (questionId, questionBody) => {
+    setAnswerModalIsOpen([true, questionId, productId, questionBody]);
   };
   const submitAnswer = (id, info) => {
     axios.post(`http://localhost:3000/question/${id}`, info)
@@ -73,12 +68,14 @@ export default function QnA({ productId = 37311 }) {
         typeOfModal="answer"
         close={() => { setAnswerModalIsOpen([false]); }}
         submitAnswer={submitAnswer}
+        product={productName}
       />
 
       <h2 className="questions-answers-header">Questions & Answers</h2>
       <QuestionSearch
         setRenderSearch={setRenderSearch}
         setSearchResults={setSearchResults}
+        questions={questions}
       />
 
       {
@@ -89,12 +86,16 @@ export default function QnA({ productId = 37311 }) {
             setShowMoreAnswers={setShowMoreAnswers}
             addQuestion={addQuestion}
             addAnswer={addAnswer}
+            isSearch={renderSearch}
           />
         ) : (
           <QuestionList
             questions={questions}
             addQuestion={addQuestion}
             addAnswer={addAnswer}
+            showMoreAnswers={showMoreAnswers}
+            setShowMoreAnswers={setShowMoreAnswers}
+            isSearch={renderSearch}
           />
         )
       }
