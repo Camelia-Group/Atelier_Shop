@@ -40,7 +40,7 @@ export default function Overview() {
     //   <h1>Overview</h1>
     //   <div><Details product={product} /></div>
     // </div>
-    <div id="wrapper">
+    <div id="wrapper" style={{'background-color': 'rgb(219, 216, 206)', 'border-radius': '25px'}}>
       <div className="overviewContainer">
         <>
           <ImageGallery

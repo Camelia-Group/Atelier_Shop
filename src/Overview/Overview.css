@@ -169,3 +169,11 @@ select {
   /* cursor:url(/img/layout/backgrounds/zoom.cur), -moz-zoom-in; */
   cursor: zoom-in;
 }
+
+.productDescription {
+  margin:10px;
+}
+
+.question-list-buttons select {
+  background: transparent;
+}
