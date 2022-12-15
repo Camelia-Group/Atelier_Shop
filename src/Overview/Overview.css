@@ -1,6 +1,6 @@
-div {
+/* div {
   outline: 1px solid red;
-}
+} */
 
 #wrapper {
   width: 70%;
@@ -15,7 +15,14 @@ div {
 }
 
 .image {
-  width:100%;
+  justify-content: center;
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: rgb(219, 216, 206);
+  margin-right: 10px;
+  align-items: center;
+  border-radius: 25px;
 }
 
 .sidebarDiv {
@@ -41,7 +48,8 @@ div {
   height: 50px;
   width: 50px;
   border-radius: 25px;
-  border: 2px solid black;
+  border: 1px solid black;
+  margin: 5px;
 }
 
 .round-image:hover{
@@ -73,17 +81,91 @@ div {
   z-index: 2;
   position: absolute;
   top: 10%;
-  left: 20%;
+  left: 10%;
 }
 
 .image-thumbnail {
   height: 50px;
   width: 50px;
+  margin:5px;
 }
 
 .image-thumbnail-highlighted {
   height: 50px;
   width: 50px;
   border-radius: 10px;
-  border-color: red;
+  border: 1px yellow;
+  margin: 10px;
+}
+
+select {
+  padding: 10px;
+  margin: 5px;
+}
+
+.back-button {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+}
+
+.next-button {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+}
+
+.expand-button {
+  position: absolute;
+  top: 3%;
+  left: 95%;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+}
+
+.expanded-image-gallery {
+  position: absolute;
+  justify-content: center;
+  display: flex;
+  background-color: rgb(219, 216, 206);
+  flex: 1 1 auto;
+  align-items: center;
+  width: 1022px;
+  height:600px;
+}
+
+
+/* .image {
+  justify-content: center;
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: rgb(219, 216, 206);
+  margin-right: 10px;
+  align-items: center;
+} */
+
+/* style={{ 'max-width': '95%', 'max-height': '95%', 'cursor': 'url(/img/layout/backgrounds/moz-zoom.gif), -moz-zoom-in'}} */
+
+.expanded-image {
+  max-width: 100%;
+  max-height: 100%;
+  /* cursor:url(/img/layout/backgrounds/zoom.cur), -moz-zoom-in; */
+  cursor: zoom-in;
 }

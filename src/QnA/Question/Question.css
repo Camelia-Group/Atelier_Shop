@@ -60,3 +60,6 @@
   margin-bottom: 14px;
   margin-top: 14px;
 }
+.question-answer-more-collapse {
+  display: none;
+}
