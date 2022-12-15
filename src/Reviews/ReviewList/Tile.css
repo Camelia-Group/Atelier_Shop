@@ -1,9 +1,30 @@
-.review-tile {
+/* .review-tile {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-}
+
+} */
 
 .nickname {
  float: right;
 }
+
+.review {
+  border-bottom: 2px solid black;
+}
+
+.review-person {
+  float: right;
+}
+
+.review-response {
+  border: 2px solid grey;
+  background-color: grey;
+}
+
+.reviewPhoto {
+  height: 10vh;
+  width: 8vh;
+  object-fit: cover;
+}
+

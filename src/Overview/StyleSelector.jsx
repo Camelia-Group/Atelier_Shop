@@ -10,17 +10,18 @@ export default function StyleSelector({ styles, selectedStyle, setSelectedStyle 
   const stylesSplitOne = styles.slice(0, styles.length / 2);
   const stylesSplitTwo = styles.slice(styles.length / 2, styles.length);
   return (
+    <>
+    <p>STYLE > SELECTED STYLE</p>
     <div>
-      <div>
-        {stylesSplitOne.map((style) => {
-          return <StyleThumbnail style={style} setSelectedStyle={setSelectedStyle} />;
-        })}
-      </div>
-      <div>
-        {stylesSplitTwo.map((style) => {
-          return <StyleThumbnail style={style} setSelectedStyle={setSelectedStyle} />;
-        })}
-      </div>
+      {stylesSplitOne.map((style) => {
+        return <StyleThumbnail style={style} setSelectedStyle={setSelectedStyle} />;
+      })}
     </div>
+    <div>
+      {stylesSplitTwo.map((style) => {
+        return <StyleThumbnail style={style} setSelectedStyle={setSelectedStyle} />;
+      })}
+    </div>
+    </>
   );
 }

@@ -9,7 +9,7 @@ import './Overview.css';
 
 const axios = require('axios');
 
-export default function Overview() {
+export default function Overview({productReviews}) {
   const [product, setProduct] = useState({});
   const [productStyles, setProductStyles] = useState([]);
   const [selectedStyle, setSelectedStyle] = useState({ skus: {} });
@@ -42,15 +42,15 @@ export default function Overview() {
     // </div>
     <div id="wrapper">
       <div className="overviewContainer">
-        <div className="image">
+        <>
           <ImageGallery
             selectedImage={selectedImage}
             setSelectedImage={setSelectedImage}
             selectedStyle={selectedStyle}
           />
-        </div>
+        </>
         <div className="sidebarDiv">
-          <div className="productDetails"><Details product={product} selectedStyle={selectedStyle} /></div>
+          <div className="productDetails"><Details product={product} selectedStyle={selectedStyle} productReviews={productReviews}/></div>
           <div className="styleSelector">
             <StyleSelector
               styles={productStyles}

@@ -2,15 +2,15 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Rating from './RatingBreakdown/Rating.jsx';
-import Tiles from './ReviewList/Tiles.jsx';
+import ReviewList from './ReviewList/ReviewList.jsx';
 import Factors from './Factors/Factors.jsx';
-// import './Reviews.css';
+import './Reviews.css';
 
 
-export default function Reviews({productID}) {
+export default function Reviews({productID, productReviews, setProductReviews}) {
 
-  const [productReviews, setProductReviews] = useState([]);
-  // const [meta, setMeta] = useState({});
+
+  const [metaData, setMetaData] = useState();
 
 
 
@@ -18,42 +18,41 @@ export default function Reviews({productID}) {
     axios.get(`/reviews/${productID}`)
     .then((result) => {
         setProductReviews(result.data);
-        // console.log(result.data);
+
     })
     .catch((err) => {
         console.log(err);
     });
   };
 
-  // const getMeta = () => {
-  //   axios.get(`/reviews/meta/${productID}`)
-  //   .then((result) => {
-  //       setMeta(result.data);
-  //       // console.log(result.data);
-  //   })
-  //   .catch((err) => {
-  //       console.log(err);
-  //   });
-  // };
+  const getMeta = () => {
+    axios.get(`/reviews/meta/${productID}`)
+    .then((result) => {
+      setMetaData(result.data);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+  };
 
   useEffect(() => {
     getReviews();
   }, []);
 
-  // useEffect(() => {
-  //   getMeta();
-  // }, []);
+  useEffect(() => {
+    getMeta();
+  }, []);
 
   return (
     <>
-      <section className="container flex">
-        <div className="left">
-        <Rating productReviews={productReviews}/>
-        <Factors/>
+      <section className="review-container flex" id="reviews">
+        {/* <h3>Ratings and Reviews</h3> */}
+        <div className="left-review">
+        <Rating productReviews={productReviews} />
+        <Factors metaData={metaData}/>
 
         </div>
-
-       <Tiles productReviews={productReviews}/>
+      <div className="right-review"><ReviewList reviews={productReviews}/></div>
 
 
       </section>

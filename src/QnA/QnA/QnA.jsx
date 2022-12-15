@@ -15,7 +15,7 @@ export default function QnA({ productId = 37311 }) {
   const [showMoreAnswers, setShowMoreAnswers] = useState(false);
   const [productName, setProductName] = useState('');
   useEffect(() => {
-    axios.get('http://localhost:3000/questions/')
+    axios.get('/questions/')
       .then((res) => {
         setQuestions(res.data.results.filter((question) => {
           if (Object.keys(question.answers).length !== 0) {
@@ -26,7 +26,7 @@ export default function QnA({ productId = 37311 }) {
       .catch((err) => {
         console.error(err);
       });
-    axios.get(`http://localhost:3000/products/${productId}`)
+    axios.get(`/products/${productId}`)
       .then((data) => {
         setProductName(data.data);
       })
@@ -34,26 +34,21 @@ export default function QnA({ productId = 37311 }) {
         console.error(err, 'ERR PROD NAME');
       });
   }, []);
-  // const handleClose = (inputs) => {
-  //   if (input) {
-
-  //   }
-  // };
   const addQuestion = () => {
     setQuestionModalIsOpen([true, productId]);
   };
-  const addAnswer = (questionId) => {
-    setAnswerModalIsOpen([true, questionId, productId]);
+  const addAnswer = (questionId, questionBody) => {
+    setAnswerModalIsOpen([true, questionId, productId, questionBody]);
   };
   const submitAnswer = (id, info) => {
-    axios.post(`http://localhost:3000/question/${id}`, info)
+    axios.post(`/question/${id}`, info)
       .then(() => {
         setAnswerModalIsOpen([false]);
       })
       .catch((err) => { console.error(err); });
   };
   const submitQuestion = (info) => {
-    axios.post('http://localhost:3000/questions', info)
+    axios.post('/questions', info)
       .then(() => {
         setQuestionModalIsOpen([false]);
       })
@@ -73,12 +68,14 @@ export default function QnA({ productId = 37311 }) {
         typeOfModal="answer"
         close={() => { setAnswerModalIsOpen([false]); }}
         submitAnswer={submitAnswer}
+        product={productName}
       />
 
       <h2 className="questions-answers-header">Questions & Answers</h2>
       <QuestionSearch
         setRenderSearch={setRenderSearch}
         setSearchResults={setSearchResults}
+        questions={questions}
       />
 
       {
@@ -89,12 +86,16 @@ export default function QnA({ productId = 37311 }) {
             setShowMoreAnswers={setShowMoreAnswers}
             addQuestion={addQuestion}
             addAnswer={addAnswer}
+            isSearch={renderSearch}
           />
         ) : (
           <QuestionList
             questions={questions}
             addQuestion={addQuestion}
             addAnswer={addAnswer}
+            showMoreAnswers={showMoreAnswers}
+            setShowMoreAnswers={setShowMoreAnswers}
+            isSearch={renderSearch}
           />
         )
       }

@@ -29,14 +29,14 @@ export default function AddToCart({ selectedStyle }) {
   };
 
   return (
-    <div>
+    <div className="question-list-buttons">
       <SelectSize
         skus={skus}
         setPossibleQuantity={setPossibleQuantity}
         setSku={setSku}
       />
       <SelectQuantity possibleQuantity={possibleQuantity} />
-      <button onClick={() => { handleAddToCart(); }}>Add To Cart</button>
+      <button onClick={() => { handleAddToCart(); }} style={{'margin': '6px', 'width': '195px'}}>Add To Cart</button>
     </div>
   );
 }

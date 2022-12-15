@@ -11,18 +11,19 @@ const root = createRoot(document.getElementById('root'));
 
 
 function App() {
-
   const [productID, setProductID] = useState(37311);
-
+  const [productReviews, setProductReviews] = useState([]);
 
   return (
     <div>
-      <div><Overview /></div>
+      <div className="navbar"></div>
+      <div><Overview productReviews={productReviews}/></div>
       <div><QnA /></div>
-      <div><RelatedItems /></div>
-      <div><Reviews productID={productID}/></div>
+      <div><Reviews productID={37311} productReviews={productReviews} setProductReviews={setProductReviews}/></div>
     </div>
   );
 }
 
 root.render(<App />);
+
+export default App;

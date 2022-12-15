@@ -1,3 +1,24 @@
-.factors {
-  border: 2px green solid;
+.ratings-product-breakdown {
+  padding-top: 25px;
+}
+
+.factor-bar {
+  background: linear-gradient(to right, lightgrey 24.5%, white 24.5%, white 25.5%, lightgrey 25.5%, lightgrey 49.5%, white 49.5%, white 50.5%, lightgrey 50.5%, lightgrey 74.5%, white 74.5%, white 75.5%, lightgrey 75.5%);
+  height: 8px;
+  margin-top: 8px;
+}
+
+.down-arrow-bar {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: -5px;
+  left: 50px;
+  color: blue;
+}
+
+.first-and-last-char {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
 }
