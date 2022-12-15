@@ -6,6 +6,8 @@
   width: 70%;
   height: 800px;
   margin: 0 auto;
+  background-color: rgb(219, 216, 206);
+  border-radius:25px;
 }
 
 .overviewContainer {
@@ -38,10 +40,13 @@
 
 .description {
   width: 70%;
+  margin-right:10px;
 }
 
 .features {
   width: 30%;
+  border-left: 1px black solid;
+  padding-left: 10px;
 }
 
 .round-image {
@@ -176,4 +181,13 @@ select {
 
 .question-list-buttons select {
   background: transparent;
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+}
+
+ul li:before {
+  content: '✓';
 }

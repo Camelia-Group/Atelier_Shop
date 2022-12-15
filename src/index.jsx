@@ -14,6 +14,7 @@ function App() {
   const [productID, setProductID] = useState(37311);
   return (
     <div>
+      <div className="navbar"></div>
       <div><Overview /></div>
       <div><QnA /></div>
       <div><RelatedItems /></div>
