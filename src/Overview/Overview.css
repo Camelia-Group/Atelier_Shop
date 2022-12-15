@@ -22,6 +22,7 @@
   background-color: rgb(219, 216, 206);
   margin-right: 10px;
   align-items: center;
+  border-radius: 25px;
 }
 
 .sidebarDiv {
@@ -136,7 +137,6 @@ select {
   padding: 0;
   font: inherit;
   outline: inherit;
-  transition: 2s ease-in-out;
 }
 
 .expanded-image-gallery {
