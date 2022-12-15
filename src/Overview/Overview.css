@@ -153,6 +153,7 @@ select {
   position: relative;
   width: 100%;
   background-color: rgb(219, 216, 206);
+  border-top-left-radius:25px;
   align-items: center;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
