@@ -15,7 +15,7 @@ export default function QnA({ productId = 37311 }) {
   const [showMoreAnswers, setShowMoreAnswers] = useState(false);
   const [productName, setProductName] = useState('');
   useEffect(() => {
-    axios.get('http://localhost:3000/questions/')
+    axios.get('/questions/')
       .then((res) => {
         setQuestions(res.data.results.filter((question) => {
           if (Object.keys(question.answers).length !== 0) {
@@ -26,7 +26,7 @@ export default function QnA({ productId = 37311 }) {
       .catch((err) => {
         console.error(err);
       });
-    axios.get(`http://localhost:3000/products/${productId}`)
+    axios.get(`/products/${productId}`)
       .then((data) => {
         setProductName(data.data);
       })
@@ -41,14 +41,14 @@ export default function QnA({ productId = 37311 }) {
     setAnswerModalIsOpen([true, questionId, productId, questionBody]);
   };
   const submitAnswer = (id, info) => {
-    axios.post(`http://localhost:3000/question/${id}`, info)
+    axios.post(`/question/${id}`, info)
       .then(() => {
         setAnswerModalIsOpen([false]);
       })
       .catch((err) => { console.error(err); });
   };
   const submitQuestion = (info) => {
-    axios.post('http://localhost:3000/questions', info)
+    axios.post('/questions', info)
       .then(() => {
         setQuestionModalIsOpen([false]);
       })

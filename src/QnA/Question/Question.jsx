@@ -27,7 +27,7 @@ function Question({ question, addAnswer }) {
   }
 
   const handleHelpfulAnswer = (id) => {
-    axios.post(`http://localhost:3000/answers/${id}/helpful`)
+    axios.post(`/answers/${id}/helpful`)
       .then(() => {
         // eslint-disable-next-line max-len
         document.getElementById(id).innerHTML = parseInt(document.getElementById(id).innerHTML, 10) + 1;
@@ -35,7 +35,7 @@ function Question({ question, addAnswer }) {
       .catch((err) => { console.error(err); });
   };
   const handleHelpfulQuestion = () => {
-    axios.post(`http://localhost:3000/question/${question.question_id}/helpful`)
+    axios.post(`/question/${question.question_id}/helpful`)
       .then(() => {
         // eslint-disable-next-line max-len
         document.getElementById(question.question_id).innerHTML = parseInt(document.getElementById(question.question_id).innerHTML, 10) + 1;
@@ -43,7 +43,7 @@ function Question({ question, addAnswer }) {
       .catch((err) => { console.error(err); });
   };
   const handleReportQuestion = () => {
-    axios.post(`http://localhost:3000/question/${question.question_id}/report`)
+    axios.post(`/question/${question.question_id}/report`)
       .then(() => {
         // eslint-disable-next-line max-len
         console.log('reported');
@@ -51,7 +51,7 @@ function Question({ question, addAnswer }) {
       .catch((err) => { console.error(err); });
   }
   const handleReportAnswer = (id) => {
-    axios.post(`http://localhost:3000/answers/${id}/report`)
+    axios.post(`/answers/${id}/report`)
     .then(() => {
       // eslint-disable-next-line max-len
       console.log('reported');
