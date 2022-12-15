@@ -7,24 +7,31 @@ body {
   background-image: linear-gradient(to right bottom, #375e96, #2f74ac, #238bbf, #1aa2d0, #1eb9de);}
 
 
-.review-container {
+/* .review-container {
   display: flex;
  flex-direction: row;
  justify-content: center;
- /* background-color: rgb(219, 216, 206);
- border-radius: 10px; */
-}
-
-/* .one {
-  border: 2px solid red;
-  width: 400px;
-  height: 400px;
+ margin-top: 30px;
 } */
+
+.review-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 67%;
+  margin: auto;
+  background-color: rgb(219, 216, 206);
+  border-radius: 25px;
+  padding: 20px;
+  margin-top: 15px;
+}
 
 .left-review {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  padding-right: 80px;
   background-color: rgb(219, 216, 206);
   /* border-radius: 10px; */
 }
