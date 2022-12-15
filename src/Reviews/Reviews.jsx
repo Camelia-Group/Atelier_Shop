@@ -7,9 +7,9 @@ import Factors from './Factors/Factors.jsx';
 import './Reviews.css';
 
 
-export default function Reviews({productID}) {
+export default function Reviews({productID, productReviews, setProductReviews}) {
 
-  const [productReviews, setProductReviews] = useState([]);
+
   const [metaData, setMetaData] = useState();
 
 
@@ -45,10 +45,10 @@ export default function Reviews({productID}) {
 
   return (
     <>
-      <section className="review-container flex">
+      <section className="review-container flex" id="reviews">
         {/* <h3>Ratings and Reviews</h3> */}
         <div className="left-review">
-        <Rating productReviews={productReviews}/>
+        <Rating productReviews={productReviews} />
         <Factors metaData={metaData}/>
 
         </div>
