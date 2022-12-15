@@ -31,7 +31,6 @@ function Question({ question, addAnswer }) {
       .then(() => {
         // eslint-disable-next-line max-len
         document.getElementById(id).innerHTML = parseInt(document.getElementById(id).innerHTML, 10) + 1;
-        alert('helpful success')
       })
       .catch((err) => { console.error(err); });
   };
