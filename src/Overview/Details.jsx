@@ -17,8 +17,8 @@ export default function Details({ product, selectedStyle }) {
         <h2>Details</h2>
         <p>{product.category}</p>
         <h3>{product.name}</h3>
-        <p style={{ color: 'red', display: 'inline' }}>{price}</p>
-        <s style={{ display: 'inline' }}>{selectedStyle.original_price}</s>
+        <p style={{ color: 'red', display: 'inline' }}> ${price}</p>
+        <s style={{ display: 'inline' }}>${selectedStyle.original_price}</s>
       </div>
     );
   } else {
@@ -27,7 +27,7 @@ export default function Details({ product, selectedStyle }) {
         <h2>Details</h2>
         <p>{product.category}</p>
         <h3>{product.name}</h3>
-        <p style={{ display: 'inline' }}>{selectedStyle.original_price}</p>
+        <p style={{ display: 'inline' }}>${selectedStyle.original_price}</p>
       </div>
     );
   }

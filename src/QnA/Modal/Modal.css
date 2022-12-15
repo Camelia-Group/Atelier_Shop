@@ -21,7 +21,7 @@ body.active-modal {
   z-index: 10000;
 }
 #overlay {
-  background: rgba(235, 228, 228, 0.986);
+  background: transparent;
   z-index: 9999;
 }
 
