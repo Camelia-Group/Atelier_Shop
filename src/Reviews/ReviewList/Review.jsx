@@ -1,7 +1,32 @@
 import React, { useState } from 'react';
+import Sorting from './Sorting.jsx'
 import './Tile.css';
+// import Stars from '../Stars.jsx'
 
 function Review({ review, addReview }) {
+
+  const [helpful, setHelpful] = useState(review.helpfulness);
+  const [click, setClick] = useState(false)
+
+  const handleHelpful = () => {
+    setHelpful(helpful + 1);
+    handleHelpfulness(review.review_id, review.helpfulness);
+  }
+
+  function stars(rating) {
+    let star = "";
+
+    for (let i = 0; i < rating; i++) {
+      star += "★";
+    }
+    for(let j=0; j < star.length; j++){
+      if(star.length <5) {
+        star += "☆"
+      }
+    }
+
+    return star;
+  }
 
   const response = () => {
     if(review.response) {
@@ -104,13 +129,18 @@ function Review({ review, addReview }) {
   return (
     <div className="review">
       <div className="review-body-container">
-      <h1>Reviews: </h1>
         <div className="review-body">
+          <h3>{stars(review.rating)}</h3>
         <p className="review-person">{review.nickname ||  'anon'}, {parseDate(review.date)}</p>
           <span className="review-body-text">
             <b>{review.body}</b>
-            {/* <h5>Photo List:{review.photos.length > 0 ?<div>{review.photos}</div> : null}</h5> */}
             <p>{review.summary}</p>
+            {review.photos.length >= 1 ? (
+        review.photos.map((photo, index) => (
+          <img src={photo.url} className="reviewPhoto" key={index} />
+        ))
+      ) : (null)}
+      {/* response */}
             {review.response ?
                 <div className='review-response'>
                   <div className='review-response title'>Response: </div>
@@ -122,16 +152,16 @@ function Review({ review, addReview }) {
           {review.recommend ? <div >✔️ I recommend this product!</div> : null}
         </div>
         <div className="review-helpful-container">
-          <span>
-            Helpful?&nbsp;
-            <button onClick={() => {}} className="review-helpful-btn" type="button">
-              <u>Yes</u>
-              {`(${review.helpfulness})`}
-            </button>
-
-          </span>
+        {!click ? (
+        <div className="helpfulReview"
+          onClick={() => {
+            setHelpful(helpful + 1);
+            setClick(true);
+          }} >Helpful? <u>Yes</u> ({review.helpfulness})</div>
+      ) : (
+        <div className="helpfulReview">Helpful? <u>Yes</u> ({review.helpfulness + 1}) </div>
+      )}
           | <a>Report</a>
-
         </div>
       </div>
 

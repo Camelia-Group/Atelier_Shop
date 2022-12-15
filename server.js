@@ -21,13 +21,16 @@ const getReview = (req, res) => {
   axios.get(
     `${url}/reviews`,
     {
-      params: { product_id: req.params.product_id },
+      params: {
+        product_id: req.params.product_id,
+        count: req.params.count,
+        sort: req.params.sort
+      },
     }).then((result) => {
     res.status(200).send(result.data.results);
     console.log('received');
   }).catch((err) => {
     console.log(err);
-    console.log(req.params.product_id)
   });
 };
 
@@ -39,7 +42,7 @@ const getMetaData = (req, res) => {
     }).then((result) => {
     res.status(200).send(result.data);
   }).catch((err) => {
-    // console.log(err);
+    console.log(err);
   });
 };
 
