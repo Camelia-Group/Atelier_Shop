@@ -236,8 +236,49 @@ function Question({ question, addAnswer }) {
                       <button style={{marginLeft: '27px'}} className="question-answer-more" onClick={() => { setShowMore([true, 'more']); setAnswerRenderCount(2); }} type="button">COLLAPSE</button>
                     ) : null
                   }
+                  &nbsp;|
+                </span>
+                <span>
+                  &nbsp;Helpful?&nbsp;
+                  <button onClick={() => {handleHelpfulAnswer(answer.id)}} className="question-answer-helpful-btn" type="button">
+                    <u>Yes</u>
+                    (
+                    <span id={`${answer.id}`}>{answer.helpfulness}</span>
+                    )
+                    &nbsp;
+                  </button>
+                </span>
+                <span>
+                  | &nbsp;
+                  <button onClick={() => {}} className="question-answer-helpful-btn" type="button">
+                    <u>Report</u>
+                  </button>
+                </span>
+              </div>
+              <div id={`m${question.question_id}`} className="question-answer-more-container">
 
-                </div>
+                {
+                  showMore[0] && showMore[1] === 'more' ? (
+                    <button
+                      onClick={() => {
+                        if (answerRenderCount >= Object.keys(question.answers)) {
+                          setAnswerRenderCount(answerRenderCount + 2);
+                          setShowMore([true, 'collapse']);
+                        } else {
+                          setAnswerRenderCount(answerRenderCount + 2);
+                        }
+                      }}
+                      type="button"
+                    >
+                      LOAD MORE
+                    </button>
+                  ) : null
+                }
+                {
+                  showMore[0] && showMore[1] === 'collapse' ? (
+                    <button onClick={() => { setShowMore([true, 'more']); setAnswerRenderCount(2); }} type="button">COLLAPSE</button>
+                  ) : null
+                }
               </div>
             )
           })

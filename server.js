@@ -29,6 +29,7 @@ const getReview = (req, res) => {
       },
     }).then((result) => {
     res.status(200).send(result.data.results);
+    console.log('received');
   }).catch((err) => {
     console.log(err);
   });
