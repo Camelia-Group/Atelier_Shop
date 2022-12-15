@@ -4,7 +4,7 @@ import './Tile.css';
 
 
 
-export default function Tile({ productReview }) {
+export default function Tile({ review }) {
   const productRecommend = (reviews) => {
     let recommends = 0;
     for (let i = 0; i < reviews.length; i++) {
@@ -27,20 +27,20 @@ export default function Tile({ productReview }) {
     <>
       <div className="review-tile">
        <h5>
-        Rating:{productReview.rating} ★★★★★
+        Rating:{review.rating} ★★★★★
       </h5>
-      <h5>{productReview.reviewer_name}, {productReview.date}</h5>
+      <h5>{review.reviewer_name}, {review.date}</h5>
 
-      <h5>{productReview.summary}</h5>
-      <h5>{productReview.body}</h5>
-      <h5>{productReview.response}</h5>
-      {/* <h5>Photo List:{productReview.photos.length > 0 ?
+      <h5>{review.summary}</h5>
+      <h5>{review.body}</h5>
+      <h5>{review.response}</h5>
+      <h5>Photo List:{review.photos.length > 0 ?
               <div>
-                {productReview.photos}
-              </div> : null}</h5> */}
+                {review.photos}
+              </div> : null}</h5>
 
 
-      <h5>{productRecommend(productReview)}% of reviews recommended this product</h5>
+      <h5>{productRecommend(review)}% of reviews recommended this product</h5>
       <h5>Helpful</h5>
       </div>
     </>)

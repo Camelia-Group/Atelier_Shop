@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import Question from '../Question/Question.jsx';
 import './QuestionList.css';
 
-function QuestionList({ questions, addQuestion, addAnswer }) {
+function QuestionList({ questions, addQuestion, addAnswer, isSearch }) {
   const [questionRenderCount, setQuestionRenderCount] = useState(4);
-
+  const [showMore, setShowMore] = useState([]);
+  let hasRendered = false;
   let questionsSorted = [];
   const questionKeys = Object.keys(questions);
   const checkSort = (currQuestions) => {
@@ -42,19 +43,51 @@ function QuestionList({ questions, addQuestion, addAnswer }) {
   };
   questionsSorted = sortQuestions(questionsSorted);
 
+  useEffect(() => {
+    if (questionsSorted.length > 4 && showMore.length === 0) {
+      setShowMore([true, 'more'])
+    }
+
+  }, [questionsSorted])
   const renderedQuestions = questionsSorted.slice(0, questionRenderCount);
-  if (questions.length === 0) {
-    return <p>Loading Questions</p>;
-  }
+
   return (
     <div className="question-list">
       {
-        renderedQuestions.map((question) => (
+        questions.length > 0 ? renderedQuestions.map((question, index) => {
+          if (JSON.stringify(question) === JSON.stringify(questionsSorted[questionsSorted.length - 1]) && showMore[0] === true && showMore[1] === 'more' && !isSearch && index > 3) {
+            setShowMore([true, 'collapse']);
+          } else if (isSearch && showMore[0] === true && showMore[1] === 'more' && hasRendered === false && JSON.stringify(question) === JSON.stringify(questionsSorted[questionsSorted.length - 1]) && index > 3) {
+            hasRendered = true;
+            setShowMore([true, 'collapse']);
+          } else if (isSearch && showMore.length) {
+            setShowMore([]);
+          }
+          return (
           <Question key={question.question_id} question={question} addAnswer={addAnswer} />
-        ))
+          );
+        }) : isSearch === true && questions.length === 0 ? (<p>No search results...</p>) : (<p>Loading questions</p>)
       }
       <div className="question-list-buttons">
-        <button type="button">MORE ANSWERED QUESTIONS</button>
+        {
+          showMore[0] === true && showMore[1] === 'more' ? (
+            <button
+              className="question-list-buttons-more"
+              onClick={() => {
+                setQuestionRenderCount(questionRenderCount + 2);
+              }}
+              type="button"
+            >
+              MORE ANSWERED QUESTIONS
+            </button>
+          ) : null
+        }
+
+        {
+          showMore[0] === true && showMore[1] === 'collapse' ? (
+            <button className="question-list-buttons-collapse" onClick={() => { setShowMore([true, 'more']); setQuestionRenderCount(4); }} type="button">COLLAPSE</button>
+          ) : null
+        }
         <button type="button" onClick={() => { addQuestion(); }}>
           ADD A QUESTION
           &nbsp;&nbsp;

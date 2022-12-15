@@ -9,42 +9,42 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
   return (
     <div>
       {
-      isOpen[0] === true && typeOfModal === 'question' ? (
-        <div className="modal">
-          <div onClick={() => { close(); }} role="presentation" className="overlay" />
-          <div className="modal-content">
-            <h2>Ask Your Question</h2>
-            <h5>
-              About the&nbsp;
-              {product}
-            </h5>
-            <form>
-              <p>Your Question</p>
-              <textarea rows="5" maxLength="1000" onChange={(e) => { setBody(e.target.value); }} required />
-              <p>What is your nickname?</p>
-              <input type="text" onChange={(e) => { setNickname(e.target.value); }} placeholder="Example: jackson11" maxLength="60" required />
-              <p>Your email</p>
-              <input type="email" onChange={(e) => { setEmail(e.target.value); }} maxLength="60" required />
-              <button
-                type="button"
-                onClick={() => {
-                  submitQuestion({
-                    body, name: nickname, email, product_id: isOpen[1],
-                  });
-                  console.log('PASSED TO SUBMIT QUESTION FN => ', {
-                    body, name: nickname, email, product_id: isOpen[1],
-                  });
-                }}
-              >
-                Submit question
+        isOpen[0] === true && typeOfModal === 'question' ? (
+          <div className="modal">
+            <div onClick={() => { close(); }} role="presentation" className="overlay" />
+            <div className="modal-content">
+              <h2>Ask Your Question</h2>
+              <h5>
+                About the&nbsp;
+                {product}
+              </h5>
+              <form>
+                <p>Your Question</p>
+                <textarea rows="5" maxLength="1000" onChange={(e) => { setBody(e.target.value); }} required />
+                <p>What is your nickname?</p>
+                <input type="text" onChange={(e) => { setNickname(e.target.value); }} placeholder="Example: jackson11" maxLength="60" required />
+                <p>Your email</p>
+                <input type="email" onChange={(e) => { setEmail(e.target.value); }} maxLength="60" required />
+                <button
+                  type="button"
+                  onClick={() => {
+                    submitQuestion({
+                      body, name: nickname, email, product_id: isOpen[1],
+                    });
+                    console.log('PASSED TO SUBMIT QUESTION FN => ', {
+                      body, name: nickname, email, product_id: isOpen[1],
+                    });
+                  }}
+                >
+                  Submit question
+                </button>
+              </form>
+              <button className="close-modal" onClick={close} type="button">
+                ❌
               </button>
-            </form>
-            <button className="close-modal" onClick={close} type="button">
-              ❌
-            </button>
+            </div>
           </div>
-        </div>
-      ) : null
+        ) : null
       }
       {
       isOpen[0] === true && typeOfModal === 'answer' ? (
@@ -52,7 +52,9 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
           <div onClick={() => { close(); }} role="presentation" className="overlay" />
           <div className="modal-content">
             <h2>Submit your Answer</h2>
-            <h5>&apos;PRODUCT&apos; : &apos;QESTION&apos;</h5>
+            {product} : {isOpen[3]}
+            <br />
+
             <form>
               <p>What is your answer?</p>
               <textarea onChange={(e) => { setBody(e.target.value); }} maxLength="1000" required />

@@ -7,3 +7,15 @@
 .nickname {
  float: right;
 }
+
+.review {
+  border: 1px solid red;
+}
+
+.review-person {
+  float: right;
+}
+
+.review-response {
+  background-color: grey;
+}

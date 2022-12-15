@@ -31,11 +31,13 @@ const totalRating = () => {
     <h2>Rating and Reviews</h2>
     <h5>{avgRating()} ★★★★★</h5>
 <h5>100% of reviews recommend this product</h5>
-  <div>5stars: {totalRating()[5]} ★★★★★ </div>
-  <div>4stars: {totalRating()[4]} ★★★★ </div>
-  <div>3stars: {totalRating()[3]} ★★★ </div>
-  <div>2stars: {totalRating()[2]} ★★ </div>
-  <div>1stars: {totalRating()[1]} ★ </div>
+  <div className="bar-5">5stars: {totalRating()[5]} ★★★★★ </div>
+  <div className="bar-4">4stars: {totalRating()[4]} ★★★★ </div>
+  <div className="bar-3">3stars: {totalRating()[3]} ★★★ </div>
+  <div className="bar-2">2stars: {totalRating()[2]} ★★ </div>
+  <div className="bar-1">1stars: {totalRating()[1]} ★ </div>
+
+
   </div>
     </>
   )

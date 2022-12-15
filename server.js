@@ -27,6 +27,7 @@ const getReview = (req, res) => {
     console.log('received');
   }).catch((err) => {
     console.log(err);
+    console.log(req.params.product_id)
   });
 };
 
@@ -38,7 +39,7 @@ const getMetaData = (req, res) => {
     }).then((result) => {
     res.status(200).send(result.data);
   }).catch((err) => {
-    console.log(err);
+    // console.log(err);
   });
 };
 
@@ -93,20 +94,35 @@ app.post('/question/:id', (req, res) => {
     .catch((err) => { res.send(err); });
 });
 app.post('/question/:id/helpful', (req, res) => {
-  axios.post(`${process.env.API_URL}/qa/questions/${req.params.id}/helpful`, req.body, {
+  axios.put(`${process.env.API_URL}/qa/questions/${req.params.id}/helpful`, req.body, {
     headers: { Authorization: process.env.API_KEY },
   })
-    .then((data) => { res.send(data); })
+    .then((data) => { console.log(data); res.send(200); })
     .catch((err) => { res.send(err); });
 });
 
 app.post('/answers/:id/helpful', (req, res) => {
-  axios.post(`${process.env.API_URL}/qa/answers/${req.params.id}/helpful`, {
+  console.log('Serving helpful answer request')
+  axios.put(`${process.env.API_URL}/qa/answers/${req.params.id}/helpful`, {
     headers: { Authorization: process.env.API_KEY },
   })
-    .then((data) => { res.send(data); })
-    .catch((err) => { res.send(err); });
+    .then((data) => { res.send(200); console.log(data); })
+    .catch((err) => { res.send(err); console.log(err)});
 });
+app.post('/answers/:id/report', (req, res) => {
+  axios.put(`${process.env.API_URL}/qa/answers/${req.params.id}/report`, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => res.send(200))
+    .catch((err) => res.send(err));
+})
+app.post('/question/:id/report', (req, res) => {
+  axios.put(`${process.env.API_URL}/qa/questions/${req.params.id}/report`, {
+    headers: { Authorization: process.env.API_KEY },
+  })
+    .then((data) => res.send(200))
+    .catch((err) => res.send(err));
+})
 app.listen(PORT, (err) => {
   if (err) {
     return console.error(err);
