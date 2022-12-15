@@ -18,9 +18,9 @@ function App() {
   return (
     <div>
       <div><Overview /></div>
-      {/* <div><QnA /></div>
+      <div><QnA /></div>
       <div><RelatedItems /></div>
-      <div><Reviews productID={productID}/></div> */}
+      <div><Reviews productID={productID}/></div>
     </div>
   );
 }
