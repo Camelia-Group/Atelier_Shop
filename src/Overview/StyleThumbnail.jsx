@@ -2,10 +2,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function StyleThumbnail({ style, setSelectedStyle }) {
-  const handleClick = () => {
+
+  const handleClick = (event) => {
     setSelectedStyle(style);
   };
 

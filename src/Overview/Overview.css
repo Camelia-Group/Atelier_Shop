@@ -57,6 +57,14 @@
   box-shadow: 10px 10px 5px #888888;
 }
 
+.round-image-highlighted {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  border: 2px solid yellow;
+  margin: 5px;
+}
+
 .image-gallery {
   max-height: 100%;
   max-width: 100%;
@@ -90,7 +98,7 @@
   height: 50px;
   width: 50px;
   border-radius: 10px;
-  border: 1px yellow;
+  border: 3px #1aa2d0 solid;
   margin: 10px;
 }
 
