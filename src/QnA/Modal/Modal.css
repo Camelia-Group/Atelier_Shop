@@ -4,9 +4,9 @@ body.active-modal {
 
 .btn-modal {
   /* display: flex; */
-  background-color: skyblue;
+  /* background-color: skyblue;
   font-size: 20px;
-  margin: 100px auto 0;
+  margin: 100px auto 0; */
 }
 
 .modal, .overlay {

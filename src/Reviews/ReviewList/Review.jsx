@@ -157,11 +157,11 @@ function Review({ review, addReview }) {
           onClick={() => {
             setHelpful(helpful + 1);
             setClick(true);
-          }} >Helpful? <u>Yes</u> ({review.helpfulness})</div>
+          }} >Helpful? <u>Yes</u> ({review.helpfulness})  <u> | Report</u> </div>
       ) : (
-        <div className="helpfulReview">Helpful? <u>Yes</u> ({review.helpfulness + 1}) </div>
+        <div className="helpfulReview">Helpful? <u>Yes</u> ({review.helpfulness + 1})  <u> | Report</u> </div>
       )}
-          | <a>Report</a>
+
         </div>
       </div>
 
