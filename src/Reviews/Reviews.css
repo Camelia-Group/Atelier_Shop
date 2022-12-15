@@ -1,3 +1,12 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  color: black;
+}
+
+body {
+  background-image: linear-gradient(to right bottom, #375e96, #2f74ac, #238bbf, #1aa2d0, #1eb9de);}
+
+
 .container {
   display: flex;
  flex-direction: row;

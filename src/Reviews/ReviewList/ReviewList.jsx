@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Review from './Review.jsx'
-import Modal from '../newReview/Modal.jsx'
+import Review from './Review.jsx';
+import Modal from '../newReview/Modal.jsx';
+// import Modalx from '../newReview/Modalx.jsx';
+import Sorting from './Sorting.jsx';
+import './ReviewList.css';
 
 function ReviewList({ reviews }) {
   const [reviewRenderCount, setReviewRenderCount] = useState(2);
@@ -16,7 +19,7 @@ function ReviewList({ reviews }) {
       return true;
     }
     for (let i = 0; i < currReviews.length - 1; i += 1) {
-      if (currReviews[i].review_helpfulness < currReviews[i + 1].review_helpfulness) {
+      if (currReviews[i].helpfulness < currReviews[i + 1].helpfulness) {
         return false;
       }
     }
@@ -32,7 +35,7 @@ function ReviewList({ reviews }) {
       return returned;
     }
     for (let i = 0; i < returned.length - 1; i += 1) {
-      if (returned[i].review_helpfulness < returned[i + 1].review_helpfulness) {
+      if (returned[i].helpfulness < returned[i + 1].helpfulness) {
         const swapped = returned[i];
         returned[i] = returned[i + 1];
         returned[i + 1] = swapped;
@@ -59,6 +62,7 @@ function ReviewList({ reviews }) {
 
   return (
     <div className="review-list">
+       <Sorting reviews={reviews}/>
       {
         // rendering of reviews
         renderedReviews.map((review, index) => {
@@ -69,7 +73,6 @@ function ReviewList({ reviews }) {
           if (JSON.stringify(review) === JSON.stringify(reviewsSorted[reviewsSorted.length - 1]) && showMore[0] === true && showMore[1] === 'more') {
             setShowMore([true, 'collapse']);
           }
-
           return (
           <Review review={review} key={review.review_id} />
         )})

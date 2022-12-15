@@ -29,7 +29,7 @@
 
 }
 .question-helpful-container * {
-  color: rgb(114, 114, 114);
+  /* color: rgb(114, 114, 114); */
 }
 
 
@@ -39,7 +39,7 @@
   /* margin-top: -11px; */
   height: 15px;
   margin-top: 10px;
-  color: rgb(114, 114, 114);
+  /* color: rgb(114, 114, 114); */
 
 }
 .question-answer-footer-container {
@@ -49,7 +49,7 @@
 .question-answer-body-text {
   font-size: small;
   margin-left: 9px;
-  color: rgb(74, 74, 74);
+  /* color: rgb(74, 74, 74); */
 }
 
 .question-body-text {

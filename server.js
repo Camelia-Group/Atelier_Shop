@@ -22,7 +22,11 @@ const getReview = (req, res) => {
   axios.get(
     `${url}/reviews`,
     {
-      params: { product_id: req.params.product_id },
+      params: {
+        product_id: req.params.product_id,
+        count: req.params.count,
+        sort: req.params.sort
+      },
     }).then((result) => {
     res.status(200).send(result.data.results);
   }).catch((err) => {
