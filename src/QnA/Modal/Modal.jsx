@@ -23,7 +23,7 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
               </h5>
               <form className="qnaForm">
                 <p>Your Question</p>
-                <textarea rows="5" cols="46" maxLength="1000" onChange={(e) => { setBody(e.target.value); }} required />
+                <textarea rows="5" cols="44" maxLength="1000" onChange={(e) => { setBody(e.target.value); }} required />
                 <p>What is your nickname?</p>
                 <input type="text" onChange={(e) => { setNickname(e.target.value); }} placeholder="Example: jackson11" maxLength="60" required />
                 <p>Your email</p>
@@ -62,7 +62,7 @@ function Modal({ isOpen, typeOfModal, close, submitQuestion, product, submitAnsw
 
             <form className="qnaForm">
               <p>What is your answer?</p>
-              <textarea onChange={(e) => { setBody(e.target.value); }} cols="46" rows="5" maxLength="1000" required />
+              <textarea onChange={(e) => { setBody(e.target.value); }} cols="44" rows="5" maxLength="1000" required />
               <p>What is your nickname?</p>
               <input type="text" onChange={(e) => { setNickname(e.target.value); }} placeholder="Example: jackson11" maxLength="60" required />
               <p>What is your email?</p>
