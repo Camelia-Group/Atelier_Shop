@@ -1,5 +1,5 @@
-.factors {
-  border: 2px green solid;
+.ratings-product-breakdown {
+  padding-top: 25px;
 }
 
 .factor-bar {
@@ -15,4 +15,10 @@
   top: -5px;
   left: 50px;
   color: blue;
+}
+
+.first-and-last-char {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
 }

@@ -2,12 +2,6 @@ body.active-modal {
   overflow-y: hidden;
 }
 
-.btn-modal {
-  /* display: flex; */
-  /* background-color: skyblue;
-  font-size: 20px;
-  margin: 100px auto 0; */
-}
 
 .modal, .overlay {
   left: 0;

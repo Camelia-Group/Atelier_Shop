@@ -45,14 +45,15 @@ export default function Reviews({productID}) {
 
   return (
     <>
-      <section className="container flex">
-        <div className="left">
+      <section className="review-container flex">
+        {/* <h3>Ratings and Reviews</h3> */}
+        <div className="left-review">
         <Rating productReviews={productReviews}/>
         <Factors metaData={metaData}/>
 
         </div>
+      <div className="right-review"><ReviewList reviews={productReviews}/></div>
 
-      <ReviewList reviews={productReviews}/>
 
       </section>
     </>

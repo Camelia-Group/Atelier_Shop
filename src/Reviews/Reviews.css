@@ -7,22 +7,26 @@ body {
   background-image: linear-gradient(to right bottom, #375e96, #2f74ac, #238bbf, #1aa2d0, #1eb9de);}
 
 
-.container {
+.review-container {
   display: flex;
  flex-direction: row;
+ justify-content: center;
 }
 
-.one {
+/* .one {
   border: 2px solid red;
   width: 400px;
   height: 400px;
-}
+} */
 
-.left {
+.left-review {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
 
+.right-review {
+ padding-left: 25px;
 }
 
 .two {

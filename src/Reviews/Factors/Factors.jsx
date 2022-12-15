@@ -27,8 +27,8 @@ export default function Factors({metaData}) {
             <div className="down-arrow-bar"> ▼ </div>
           </div>
           <div className="first-and-last-char">
-            <div className="first-char">{characteristicsMeaning[characteristic][0]}</div>
-            <div className="last-char">{characteristicsMeaning[characteristic][4]}</div>
+            <div>{characteristicsMeaning[characteristic][0]}</div>
+            <div>{characteristicsMeaning[characteristic][4]}</div>
           </div>
         </div>
       ))}
