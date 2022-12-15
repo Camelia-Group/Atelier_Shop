@@ -17,7 +17,6 @@ function App() {
       <div className="navbar"></div>
       <div><Overview /></div>
       <div><QnA /></div>
-      <div><RelatedItems /></div>
       <div><Reviews productID={37311} /></div>
     </div>
   );
