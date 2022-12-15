@@ -12,7 +12,7 @@ body.active-modal {
 }
 
 .overlay {
-  background: rgba(235, 228, 228, 0.986);
+  /* background: rgba(235, 228, 228, 0.986); */
 }
 
 .modal-content {
