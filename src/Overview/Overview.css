@@ -150,8 +150,9 @@ select {
   background-color: rgb(219, 216, 206);
   flex: 1 1 auto;
   align-items: center;
-  width: 1022px;
+  width: 1023px;
   height:600px;
+  border-radius: 25px;
 }
 
 
