@@ -1,4 +1,4 @@
-
+//stars func
 function stars(rating) {
   let star = "";
 
