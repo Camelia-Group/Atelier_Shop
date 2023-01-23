@@ -15,4 +15,21 @@ Ratings & Reviews: Stephen Chong
 <p>Run node server.js in another terminal instance
 <p>Navigate to localhost:4000
 
-
+# Tech Stack
+  
+• Setup and Configuration
+  Git | NPM | Babel | Webpack
+  
+• Front End Development: Javascript, React.js, Axios, HTML, CSS
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+  
+• Deployment: AWS EC2, Ubuntu
+  
+• API: Atelier API
+  
+  Team Collaboration:
+  Trello | Slack | Zoom
