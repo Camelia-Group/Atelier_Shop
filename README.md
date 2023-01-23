@@ -10,12 +10,22 @@ Questions & Answers: Brandon Vega
 
 Ratings & Reviews: Stephen Chong
 
-# Available Scripts
 
-<p>Clone the repository to your computer and run the command npm install</p>
-<p>Run npm start in one terminal instance
-<p>Run node server.js in another terminal instance
-<p>Navigate to localhost:4000
+## Available Scripts
+```sh
+npm install
+```
+```sh
+npm start
+```
+
+## Testing
+
+To run unit tests:
+
+```sh
+npm test
+```
 
 # Tech Stack
   
