@@ -5,7 +5,9 @@ Welcome to Camelia Shop! This is a fully built front end website created to show
 # Components and Contributers
 
 Products: Ivan Day
+
 Questions & Answers: Brandon Vega
+
 Ratings & Reviews: Stephen Chong
 
 # Available Scripts
